@@ -1,0 +1,24 @@
+
+#tomcat port
+server:
+  port: 9002
+#jsp
+spring:
+  #mvc:
+    #view:
+      #prefix: /WEB-INF/
+      #suffix: .jsp
+  devtools:
+    livereload:
+      enabled: true
+#mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sist?serverTimezone=Asia/Seoul
+    username: dragon
+    password: 1234
+#mybatis
+mybatis:
+  type-aliases-package: boot.sist.*
+  mapper-locations:
+  - /mapper/**/*.xml
