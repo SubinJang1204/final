@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <link
 	href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
 	rel="stylesheet">

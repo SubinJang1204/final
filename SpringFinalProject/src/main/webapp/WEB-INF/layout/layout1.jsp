@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <link
 	href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
 	rel="stylesheet">
@@ -25,7 +26,7 @@ div.layout div.menu {
 	top: 0px;
 	height:80px;
 	inline-height:80px;
-	width:100%;
+	width:100vw;
 	background-color:#fff;
 }
 
