@@ -22,8 +22,33 @@
 *{
 font-family: 'Gowun Dodum', sans-serif;
 }
+.f_link{
+width:1200px;
+height:auto;
+margin-top:40px;
+}
+
+.links{
+display: inline-block;
+width:250px;
+height:120px;
+margin-left:5px;
+margin-right:5px;
+}
+
+.links img{
+border-radius:8px;
+-webkit-filter: grayscale(90%);filter: grayscale(90%);
+cursor:pointer;
+
+}
+
+.links img:hover{
+-webkit-filter: grayscale(0%);filter: grayscale(0%);
+}
 </style>
 </head>
+
 <c:set var="root" value="<%=request.getContextPath() %>"/>
 <body>
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -47,8 +72,18 @@ font-family: 'Gowun Dodum', sans-serif;
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<center>
+<div class="f_link" style="z-index:1000;">
+<div class="links"><img src="../image/8.png"><caption>전체 인기상품</caption></div>
+<div class="links"><img src="../image/1.png"><caption>여성별 인기상품</caption></div>
+<div class="links"><img src="../image/2.png"><caption>남성별 인기상품</caption></div>
+<div class="links"><img src="../image/4.png" onclick="location.href='../shop/list'"><caption>전체 상품</caption></div><br><br>
+<div class="links" onclick="location.href='../sns/list'"><img src="../image/9.png"><caption>SNS</caption></div>
+<div class="links" onclick="location.href='../event/list'"><img src="../image/15.png"><caption>EVENT</caption></div>
+<div class="links" onclick="location.href=''"><img src="../image/16.png"><caption>동네 게시판</caption></div>
+<div class="links" onclick="location.href=''"><img src="../image/10.png"><caption>고객센터</caption></div>
+</div>
+</center>
+
 </body>
 </html>
