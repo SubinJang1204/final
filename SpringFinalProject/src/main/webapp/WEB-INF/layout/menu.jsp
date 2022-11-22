@@ -80,6 +80,7 @@ html {
 						</ul></li>
 					<li class="nav-item"><a class="nav-link" href="#" style="color: #000;">Menu1</a></li>
 					<li class="nav-item"><a class="nav-link" href="#" style="color: #000;">Menu2</a></li>
+					<li class="nav-item"><a class="nav-link" href="${root}/sns/list" style="color: #000;">Trend</a></li>
 
 
 
