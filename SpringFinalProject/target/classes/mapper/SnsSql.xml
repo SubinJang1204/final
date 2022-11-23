@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boot.sist.mapper.SnsMapperInter">
+   
+   <insert id="insertSns" parameterType="sns">
+  	 insert into snsboard(m_num,m_id,m_name,m_photo,subject,content,photo,writeday) 
+  	 values (#{m_num},#{m_id},#{m_name},#{m_photo},#{subject},#{content},#{photo},now())
+   </insert>
+   
+   <select id="getAllSns" parameterType="Map" resultType="sns">
+   	select * from snsboard order by num desc limit #{start},#{perpage}
+   </select>
+   
+   <select id="getOneSns" parameterType="int" resultType="sns">
+   	select * from snsboard where num=#{num}
+   </select>
+   
+   <update id="updateSns" parameterType="sns">
+   	update snsboard set subject=#{subject}, content=#{content}
+		<if test="photo != 'no'">
+			, photo=#{photo}
+		</if>
+	where num=#{num}
+   </update>
+   
+   <delete id="deleteSns" parameterType="int">
+   	delete from snsboard where num=#{num}
+   </delete>
+
+</mapper>
