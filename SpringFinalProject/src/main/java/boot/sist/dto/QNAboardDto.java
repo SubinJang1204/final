@@ -17,6 +17,6 @@ public class QNAboardDto {
 	private String question;
 	private String answer;
 	private int readcount;
-	private int secret;
+	private String secret;
 	private Timestamp writeday;
 }

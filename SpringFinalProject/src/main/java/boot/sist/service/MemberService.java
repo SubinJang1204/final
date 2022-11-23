@@ -59,5 +59,17 @@ public class MemberService implements MemberServiceInter {
 		return mapperInter.getDataByNum(num);
 	}
 
+	@Override
+	public List<MemberDto> getAllMembers() {
+
+		return mapperInter.getAllMembers();
+	}
+
+	@Override
+	public void deleteMember(String num) {
+
+		mapperInter.deleteMember(num);
+	}
+
 	
 }

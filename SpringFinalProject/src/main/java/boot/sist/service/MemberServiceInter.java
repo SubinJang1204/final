@@ -1,7 +1,6 @@
 package boot.sist.service;
 
 import java.util.List;
-import java.util.Map;
 
 import boot.sist.dto.MemberDto;
 
@@ -16,4 +15,6 @@ public interface MemberServiceInter {
 	public int getIdPassCheck(String id, String pass);
 	public MemberDto getDataById(String id);
 	public MemberDto getDataByNum(String num);
+	public List<MemberDto> getAllMembers();
+	public void deleteMember(String num);
 }

@@ -20,4 +20,12 @@
    <select id="getDataByNum" parameterType="String" resultType="member">
    select * from member where num=#{num}
    </select>
+   
+   <select id="getAllMembers" resultType="member">
+		SELECT * FROM member
+   </select>
+   
+	<delete id="deleteMember">
+		DELETE FROM member WHERE num=#{num}
+	</delete>
   </mapper>

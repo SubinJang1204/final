@@ -19,11 +19,22 @@
 *{
 font-family: 'Gowun Dodum', sans-serif;
 }
+
+.btn{
+	margin-right: 100px;
+	width: 200px;
+	height: 80px;
+}
 </style>
 
 </head>
 
 <body>
-	관리자 페이지
+
+	<div class="d-grid gap-2 d-md-block" style="margin-top: 200px; margin-left: 400px;">
+		<button type="button" class="btn btn-outline-secondary" onclick="location.href='memberList'">회원 관리</button>
+		<button type="button" class="btn btn-outline-secondary" onclick="location.href=''">상품 관리</button>
+		<button type="button" class="btn btn-outline-secondary" onclick="location.href='event'">이벤트 관리</button>
+	</div>
 </body>
 </html>

@@ -16,4 +16,6 @@ public interface MemberMapperInter {
 	public int getIdPassCheck(Map<String, String> map);
 	public MemberDto getDataById(String id);
 	public MemberDto getDataByNum(String num);
+	public List<MemberDto> getAllMembers();
+	public void deleteMember(String num);
 }
