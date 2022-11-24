@@ -50,5 +50,17 @@ public class QNAboardService implements QNAboardServiceInter {
 
 		return mapperInter.getData(num);
 	}
+
+	@Override
+	public void deleteQNA(String num) {
+
+		mapperInter.deleteQNA(num);
+	}
+
+	@Override
+	public void insertAnswer(QNAboardDto dto) {
+
+		mapperInter.insertAnswer(dto);
+	}
 	
 }

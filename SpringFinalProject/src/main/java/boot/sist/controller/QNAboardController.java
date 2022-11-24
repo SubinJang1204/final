@@ -128,16 +128,50 @@ public class QNAboardController {
 	@GetMapping("/qna/detail")
 	public ModelAndView goDetail(@RequestParam String num, @RequestParam int currentPage) {
 		
+		service.updateReadcount(num);
+		
 		ModelAndView mav = new ModelAndView();
 		
 		QNAboardDto dto = service.getData(num);
 		
+		String photo = mservice.getDataByNum(dto.getM_num()).getPhoto();
+		
 		mav.addObject("currentPage", currentPage);
 		mav.addObject("dto", dto);
-		
-		service.updateReadcount(num);
+		mav.addObject("photo", photo);
 		
 		mav.setViewName("/qna/detail");
+		
+		return mav;
+	}
+	
+	
+	@GetMapping("/qna/delete")
+	public ModelAndView deleteQNA(@RequestParam String num, @RequestParam int currentPage) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		service.deleteQNA(num);
+		
+		mav.addObject("currentPage", currentPage);
+		
+		mav.setViewName("redirect:list");
+		
+		return mav;
+	}
+	
+	
+	@PostMapping("/qna/insertanswer")
+	public ModelAndView inseranswer(@ModelAttribute QNAboardDto dto, @RequestParam int currentPage) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		service.insertAnswer(dto);
+		
+		mav.addObject("num", dto.getNum());
+		mav.addObject("currentPage", currentPage);
+		
+		mav.setViewName("redirect:detail");
 		
 		return mav;
 	}

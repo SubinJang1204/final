@@ -22,20 +22,41 @@ font-family: 'Gowun Dodum', sans-serif;
 }
 </style>
 
+<script type="text/javascript">
+	$(function(){
+		
+		$("button.gowrite").click(function(){
+			
+			var loginok = $(this).attr("loginok");
+			var currentPage = $(this).attr("currentPage");
+			// console.log(loginok + ", " + currentPage);
+			
+			if(loginok == ""){
+				
+				alert("로그인이 필요한 서비스입니다.")
+				
+			} else {
+				
+				location.href="qnaform?currentPage=" + currentPage;
+			}
+		});
+	});
+</script>
+
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-sm w3-theme-l3 justify-content-center" style="margin-top: 50px;">
+	<nav class="navbar navbar-expand-sm w3-theme-l3 justify-content-center" style="margin-top: 50px; margin-left: 40%">
 		<ul class="navbar-nav">
 			<li class="nav-item">
-				<a class="nav-link" href=""><b>문의하기</b></a>
+				<a class="nav-link" href="qnaform?currentPage=${ currentPage }"><b>문의하기</b></a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href=""><b>나의 문의</b></a>
 			</li>
 		</ul>
 	</nav>
-	<table class="table table-hover" id="qnatable" style="margin-top: 30px;">
+	<table class="table table-hover" style="width: 1200px; margin-top: 30px; margin-left: 20%;">
 		<caption>
 			<!-- paging -->
 				<c:if test="${ totalCnt > 0 }">
@@ -100,7 +121,25 @@ font-family: 'Gowun Dodum', sans-serif;
 			
 			<c:if test="${ totalCnt != 0 }">
 				<c:forEach items="${ list }" var="dto" varStatus="i">
-					<c:if test="${ sessionScope.loginok != null }">
+					
+					<!-- 관리자 계정으로 로그인 시 -->
+					<c:if test="${ sessionScope.loginok != null and sessionScope.myid == 'admin'  }">
+						<tr style="cursor: pointer;" onclick="location.href='detail?num=${ dto.num }&currentPage=${ currentPage }'">
+							<td align="center">${ no }</td>
+							<c:set var="no" value="${ no - 1 }"/>
+							<td>
+								${ dto.subject }
+								<c:if test="${ dto.answer != 'noAnswer' }">
+									<b style="color:blue; font-size: 0.7em;">[답변완료]</b>
+								</c:if>
+							</td>
+							<td style="text-align: center;">${ dto.id }</td>
+							<td style="text-align: center;"><fmt:formatDate value="${ dto.writeday }" pattern="yy-MM-dd HH:mm"/></td>
+							<td style="text-align: center;">${ dto.readcount }</td>
+						</tr>
+					</c:if>
+				
+					<c:if test="${ sessionScope.loginok != null and sessionScope.myid != 'admin' }">
 						<!-- 비밀글이 아닐때 -->
 						<c:if test="${ dto.secret == 0 }">
 							<tr style="cursor: pointer;" onclick="location.href='detail?num=${ dto.num }&currentPage=${ currentPage }'">
@@ -184,7 +223,7 @@ font-family: 'Gowun Dodum', sans-serif;
 		<thead>
 			<tr>
 				<td colspan="5" align="right">
-					<button type="button" class="btn btn-outline-dark" onclick="location.href='qnaform?currentPage=${ currentPage }'">문의하기</button>
+					<button type="button" class="btn btn-outline-dark gowrite" currentPage="${ currentPage }" loginok="${ sessionScope.loginok }">문의하기</button>
 				</td>
 			</tr>
 		</thead>

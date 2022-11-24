@@ -15,4 +15,6 @@ public interface QNAboardMapperInter {
 	public List<QNAboardDto> getAllDatas(Map<String, Integer> map);
 	public void updateReadcount(String num);
 	public QNAboardDto getData(String num);
+	public void deleteQNA(String num);
+	public void insertAnswer(QNAboardDto dto);
 }

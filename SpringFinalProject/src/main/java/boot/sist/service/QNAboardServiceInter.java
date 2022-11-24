@@ -11,4 +11,6 @@ public interface QNAboardServiceInter {
 	public List<QNAboardDto> getAllDatas(int start, int perpage);
 	public void updateReadcount(String num);
 	public QNAboardDto getData(String num);
+	public void deleteQNA(String num);
+	public void insertAnswer(QNAboardDto dto);
 }

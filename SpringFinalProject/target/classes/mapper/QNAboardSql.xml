@@ -22,4 +22,12 @@
 	<select id="getData" parameterType="String" resultType="qnaboard">
 		SELECT * FROM qnaboard WHERE num=#{num}
 	</select>
+	
+	<delete id="deleteQNA" parameterType="String">
+		DELETE FROM qnaboard WHERE num=#{num}
+	</delete>
+	
+	<update id="insertAnswer" parameterType="qnaboard">
+		UPDATE qnaboard SET answer=#{answer} WHERE num=#{num}
+	</update>
 </mapper>

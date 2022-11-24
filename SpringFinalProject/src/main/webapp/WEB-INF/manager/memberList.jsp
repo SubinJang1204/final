@@ -34,7 +34,7 @@ font-family: 'Gowun Dodum', sans-serif;
 
 <body>
 	<div style="margin: 20px;">
-		<table class="table table-striped caption-top" style="width: 800px;">
+		<table class="table table-striped caption-top" style="width: 1200px; margin-top: 30px; margin-left: 20%;">
 			<caption><b>${ cnt - 1 }명의 회원 정보</b></caption>
 		
 			<tr>
