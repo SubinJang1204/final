@@ -22,6 +22,7 @@ public class ShopService implements ShopServiceInter {
 		return shopMapper.getShop(shopnum);
 	}
 	
+	
 	@Override
 	public int getStyleReviewListCount(String shopNum) {
 		return shopMapper.getStyleReviewListCount(shopNum);

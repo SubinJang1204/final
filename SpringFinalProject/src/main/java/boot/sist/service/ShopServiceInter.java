@@ -14,3 +14,4 @@ public interface ShopServiceInter {
 	public List<ShopStyleReviewDto> getStyleReviewList(ShopStyleReviewListEntity styleReviewListEntity);
 	public Boolean addStyleReview(ShopStyleReviewEntity styleReviewEntity);
 }
+

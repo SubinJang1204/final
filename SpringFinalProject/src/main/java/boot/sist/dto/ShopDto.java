@@ -24,6 +24,7 @@ public class ShopDto {
 	private int temp;
 	private String releases;
 	
+	
 	public String getPriceWithCommas() {
 		StringBuilder builder = new StringBuilder();
 		builder.append(price);

@@ -39,6 +39,7 @@ public class ShopController {
 		return "/shop/list";
 	}
 	
+	
 	@GetMapping("/{shopId}")
 	public String shopDetailPage(@PathVariable("shopId") String shopId, ModelMap model) {
 		ShopStyleReviewListEntity styleReviewListEntity = new ShopStyleReviewListEntity(shopId, 0, 8);

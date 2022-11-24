@@ -19,3 +19,4 @@ public class ShopStyleReviewDto {
 		return "/upload/" + style_photo;
 	}
 }
+
