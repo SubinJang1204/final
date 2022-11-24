@@ -164,7 +164,7 @@
 				</div>
 				<caption>동네 게시판</caption>
 			</div>
-			<div class="links" onclick="location.href=''">
+			<div class="links" onclick="location.href='../qna/list'">
 				<div class="scale">
 					<img src="../image/10.png">
 				</div>

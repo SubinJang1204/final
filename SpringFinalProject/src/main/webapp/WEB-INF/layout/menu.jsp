@@ -239,7 +239,7 @@ textarea::placeholder {
 
 						<c:if test="${myid=='admin' }">
 							<li style="position: relative; left: 780px;"><a
-								href="manager"><i class="bi bi-gear" id="hov"
+								href="${root}/manager/main"><i class="bi bi-gear" id="hov"
 									style="font-size: 16pt;"></i></a></li>&nbsp;&nbsp;&nbsp;
 					</c:if>
 
@@ -284,7 +284,7 @@ textarea::placeholder {
 									class="bi bi-chat"></i>&nbsp;SNS</span> <span
 									onclick="location.href='event/list'" style="display: block"><i
 									class="bi bi-gift"></i>&nbsp;EVENT</span> <span
-									onclick="location.href=''" style="display: block"><i
+									onclick="location.href='qna/list'" style="display: block"><i
 									class="bi bi-question-circle"></i>&nbsp;Q&A</span> <span
 									onclick="location.href='${root}/login/logoutprocess'"
 									style="display: block"><i class="bi bi-door-closed"></i>&nbsp;LOGOUT</span>
