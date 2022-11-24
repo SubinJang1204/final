@@ -21,8 +21,8 @@
 
 <ul class="mainSnsNav">
 	<button class="liNav">Trend Now</button>
-	<button class="liNav" onclick="location.href='list'">Fashion SNS</button>
-	<button class="liNav">Re-sell Market</button>
+	<button class="liNav selected" onclick="location.href='list'">Fashion SNS</button>
+	<button class="liNav" onclick="location.href='../resell/list'">Re-sell Market</button>
 </ul>
 
 <div class="d-md-flex justify-content-md-end pe-5">
@@ -35,7 +35,6 @@
 	</div>
 </section>
 
-<fmt:formatDate value=""/>
 
 <!-- 새 글 입력 Modal start -->
 <div class="modal fade" id="writeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

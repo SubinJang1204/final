@@ -169,7 +169,7 @@ function check(){
 			
 			
 			
-			<button type="submit" class="btn btn-dark">회원가입</button>
+			<button type="submit" class="btn btn-dark btn-sm">회원가입</button>
 		
 	</form>
 </div>
