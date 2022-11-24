@@ -2,6 +2,7 @@
 
 * { 
 font-family: 'Gowun Dodum', sans-serif;
+box-sizing: border-box;
 }
 
 /* 카드 애니메이션 */
@@ -41,7 +42,7 @@ font-family: 'Gowun Dodum', sans-serif;
 }
 
 /* 글 발행 버튼 */
-.writebtn {
+.btn-outline-dark {
 	border-radius: 30px !important;
 }
 
@@ -53,8 +54,12 @@ font-family: 'Gowun Dodum', sans-serif;
 	background-color: white;
 }
 
+.resellcard{
+	border-radius: 10px !important;
+}
+
 .card:hover{
-	transform : translateY(-20px);
+	transform : translateY(-20px) scale(1.1);
 }
 
 /* 이미지 출력 꽉 채우게 */
@@ -75,15 +80,16 @@ font-family: 'Gowun Dodum', sans-serif;
 }
 
 /* js 파일 이름, 하트 정렬 */
-.card-footer{
+/* .card-footer{
 	display: flex;
 	justify-content: space-between;
-}
+} */
 
 /* js 파일 날짜 정렬 */
 .card-body{
 	display: flex;
 	flex-direction: column;
+	height: 90%;
 }
 .cardday{
 	margin-top: auto;
