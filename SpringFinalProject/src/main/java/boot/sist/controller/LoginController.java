@@ -57,6 +57,7 @@ public class LoginController {
 			session.setAttribute("saveok", cbsave);
 			session.setAttribute("loginphoto", mdto.getPhoto());
 			session.setAttribute("loginname", mdto.getName());
+			session.setAttribute("loginid", mdto.getNum());
 			
 			return "redirect:/";
 		}else {

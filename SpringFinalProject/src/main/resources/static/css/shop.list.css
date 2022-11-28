@@ -1,0 +1,384 @@
+@charset "UTF-8";
+.main {
+  width: 100%;
+}
+
+.shop {
+  font-size: 0;
+}
+.shop p {
+  margin: 0;
+}
+.shop .shop-search {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.shop .shop-search .shop-search-box {
+  position: relative;
+}
+.shop .shop-search .shop-search-box::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+}
+.shop .shop-search .shop-search-box input {
+  position: relative;
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  padding: 12px;
+  border: none;
+}
+.shop .shop-search .shop-search-box .shop-search-suggest {
+  position: absolute;
+  display: none;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 300px;
+  border: 1px solid #ddd;
+  box-shadow: 0 5px 15px #eee;
+  background-color: #fff;
+  overflow: auto;
+  z-index: 5;
+}
+.shop .shop-search .shop-search-box .shop-search-suggest a {
+  display: flex;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  background-color: #fff;
+  color: inherit;
+  text-decoration: none;
+}
+.shop .shop-search .shop-search-box .shop-search-suggest a:hover {
+  background-color: #f0f0f0;
+}
+.shop .shop-search .shop-search-box .shop-search-suggest a picture {
+  display: flex;
+  max-width: 40px;
+  flex-basis: 40px;
+  margin-right: 8px;
+}
+.shop .shop-search .shop-search-box .shop-search-suggest a picture::before {
+  content: "";
+  padding-bottom: 100%;
+}
+.shop .shop-search .shop-search-box .shop-search-suggest a picture img {
+  width: 100%;
+}
+.shop .shop-search .shop-search-box .shop-search-suggest a .shop-suggest-text p:nth-child(1) {
+  font-size: 14px;
+}
+.shop .shop-search .shop-search-box .shop-search-suggest a .shop-suggest-text p:nth-child(2) {
+  font-size: 12px;
+}
+.shop .shop-search .shop-search-box.searching .shop-search-suggest {
+  display: block;
+}
+.shop .shop-category {
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  padding: 30px 60px;
+  margin: 30px auto 0;
+}
+.shop .shop-category .shop-category-list {
+  display: flex;
+}
+.shop .shop-category .shop-category-list .shop-category-item {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.shop .shop-category .shop-category-list .shop-category-item label {
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: #eee;
+  cursor: pointer;
+}
+.shop .shop-category .shop-category-list .shop-category-item label input[type=radio] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+.shop .shop-category .shop-category-list .shop-category-item label span {
+  font-size: 16px;
+}
+.shop .shop-category .shop-category-list .shop-category-item label input[type=radio]:checked ~ span {
+  font-weight: 700;
+}
+.shop .shop-category .shop-category-detail {
+  margin-top: 20px;
+}
+.shop .shop-category .shop-category-detail .shop-category-items {
+  display: none;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.shop .shop-category .shop-category-detail .shop-category-items picture {
+  display: block;
+  margin-bottom: 10px;
+}
+.shop .shop-category .shop-category-detail .shop-category-items picture img {
+  width: 100%;
+}
+.shop .shop-category .shop-category-detail .shop-category-items span {
+  font-size: 14px;
+}
+.shop .shop-category .shop-category-detail .shop-category-items button {
+  max-width: 90px;
+  padding: 0 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: transparent;
+}
+.shop .shop-category .shop-category-detail .shop-category-items.active {
+  display: flex;
+}
+.shop .shop-content {
+  display: flex;
+  max-width: 1280px;
+  padding: 30px 60px;
+  margin: 0 auto;
+}
+.shop .shop-content .shop-filter {
+  width: 200px;
+  margin-right: 20px;
+}
+.shop .shop-content .shop-filter .filter-status {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.shop .shop-content .shop-filter .filter-status p {
+  font-size: 14px;
+}
+.shop .shop-content .shop-filter .filter-status .btn-clear {
+  display: none;
+  font-size: 14px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+.shop .shop-content .shop-filter .filter-status.filtered .btn-clear {
+  display: block;
+}
+.shop .shop-content .shop-filter .filter {
+  position: relative;
+  padding: 10px 0;
+}
+.shop .shop-content .shop-filter .filter .filter-name {
+  font-weight: 700;
+  font-size: 14px;
+}
+.shop .shop-content .shop-filter .filter .filter-text {
+  font-size: 16px;
+  color: #787878;
+}
+.shop .shop-content .shop-filter .filter button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+.shop .shop-content .shop-filter .filter .btn-filter {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-right: 30px;
+  text-align: left;
+}
+.shop .shop-content .shop-filter .filter .btn-filter i {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+}
+.shop .shop-content .shop-filter .filter .btn-filter .bi-dash {
+  display: none;
+}
+.shop .shop-content .shop-filter .filter .filter-list {
+  display: none;
+  padding: 10px 0;
+}
+.shop .shop-content .shop-filter .filter .filter-list .filter-item label {
+  display: flex;
+  align-items: center;
+  padding: 2px 0;
+  cursor: pointer;
+}
+.shop .shop-content .shop-filter .filter .filter-list .filter-item input {
+  margin-right: 5px;
+}
+.shop .shop-content .shop-filter .filter .filter-list .filter-item span {
+  font-size: 14px;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.shop .shop-content .shop-filter .filter .filter-sub-list {
+  padding-left: 20px;
+}
+.shop .shop-content .shop-filter .filter + .filter {
+  border-top: 1px solid #ddd;
+}
+.shop .shop-content .shop-filter .filter.active .btn-filter .bi-plus {
+  display: none;
+}
+.shop .shop-content .shop-filter .filter.active .btn-filter .bi-dash {
+  display: inline;
+}
+.shop .shop-content .shop-filter .filter.active .filter-text {
+  display: none;
+}
+.shop .shop-content .shop-filter .filter.active .filter-list {
+  display: block;
+}
+.shop .shop-content .shop-filter .filter.filtered .filter-text {
+  color: #000;
+}
+.shop .shop-content .shop-list-wrapper {
+  flex: 1;
+}
+.shop .shop-content .shop-list-wrapper .shop-filter-sort {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 0 10px;
+  text-align: right;
+}
+.shop .shop-content .shop-list-wrapper .shop-filter-sort button {
+  position: relative;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+.shop .shop-content .shop-list-wrapper .shop-filter-sort .btn-sort span {
+  font-weight: 700;
+  font-size: 14px;
+  margin-right: 5px;
+}
+.shop .shop-content .shop-list-wrapper .shop-filter-sort .btn-sort i {
+  font-size: 20px;
+}
+.shop .shop-content .shop-list-wrapper .shop-filter-sort .btn-sort.active + .sort-list {
+  display: flex;
+}
+.shop .shop-content .shop-list-wrapper .shop-filter-sort .sort-list {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  top: calc(100% + 5px);
+  right: 5px;
+  border: 1px solid #eee;
+  background-color: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+.shop .shop-content .shop-list-wrapper .shop-filter-sort .sort-list button {
+  text-align: left;
+  padding: 15px 55px 15px 15px;
+}
+.shop .shop-content .shop-list-wrapper .shop-filter-sort .sort-list button strong {
+  font-weight: 700;
+  font-size: 14px;
+}
+.shop .shop-content .shop-list-wrapper .shop-filter-sort .sort-list button p {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #a7a7a7;
+}
+.shop .shop-content .shop-list-wrapper .shop-filter-sort .sort-list button:hover {
+  background-color: #f5f5f5;
+}
+.shop .shop-content .shop-list-wrapper .shop-filter-sort .sort-list button.active::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  background: url(/image/check-lg.svg) no-repeat center/contain;
+}
+.shop .shop-content .shop-list-wrapper .shop-filter-status {
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+.shop .shop-content .shop-list-wrapper .shop-filter-status button {
+  position: relative;
+  font-size: 14px;
+  padding: 5px 25px 5px 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f4f4f4;
+}
+.shop .shop-content .shop-list-wrapper .shop-filter-status button::after {
+  content: "×";
+  position: absolute;
+  font-size: 20px;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+}
+.shop .shop-content .shop-list-wrapper .shop-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.shop .shop-content .shop-list-wrapper .shop-list .shop-item {
+  flex: 0 0 calc((100% - 60px) / 3);
+  margin: 0 10px 20px;
+}
+.shop .shop-content .shop-list-wrapper .shop-list .shop-item a {
+  color: inherit;
+  text-decoration: none;
+}
+.shop .shop-content .shop-list-wrapper .shop-list .shop-item .shop-image picture {
+  display: block;
+  border-radius: 10px;
+  background-color: #eee;
+  overflow: hidden;
+}
+.shop .shop-content .shop-list-wrapper .shop-list .shop-item .shop-image picture img {
+  width: 100%;
+}
+.shop .shop-content .shop-list-wrapper .shop-list .shop-item .shop-text {
+  padding: 10px;
+}
+.shop .shop-content .shop-list-wrapper .shop-list .shop-item .shop-text .shop-title {
+  font-weight: 700;
+  font-size: 14px;
+}
+.shop .shop-content .shop-list-wrapper .shop-list .shop-item .shop-text .shop-categories {
+  font-size: 14px;
+}
+.shop .shop-content .shop-list-wrapper .shop-list .shop-item .shop-text .shop-price {
+  font-weight: 700;
+  font-size: 14px;
+  margin: 10px 0;
+}
+.shop .shop-content .shop-list-wrapper .shop-list .shop-item .shop-text .shop-statistics {
+  display: flex;
+}
+.shop .shop-content .shop-list-wrapper .shop-list .shop-item .shop-text .shop-statistics p {
+  margin-right: 10px;
+}
+.shop .shop-content .shop-list-wrapper .shop-list .shop-item .shop-text .shop-statistics p i {
+  font-size: 20px;
+  margin-right: 5px;
+}
+.shop .shop-content .shop-list-wrapper .shop-list .shop-item .shop-text .shop-statistics p span {
+  font-size: 14px;
+}
+
+/*# sourceMappingURL=shop.list.css.map */
