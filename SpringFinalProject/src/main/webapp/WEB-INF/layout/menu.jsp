@@ -280,11 +280,11 @@ textarea::placeholder {
 								</form>
 						</span>
 							<div class="Q_link">
-								<span onclick="location.href='sns/list'" style="display: block"><i
+								<span onclick="location.href='${root}/sns/list'" style="display: block"><i
 									class="bi bi-chat"></i>&nbsp;SNS</span> <span
-									onclick="location.href='event/list'" style="display: block"><i
+									onclick="location.href='${root}/event/list'" style="display: block"><i
 									class="bi bi-gift"></i>&nbsp;EVENT</span> <span
-									onclick="location.href='qna/list'" style="display: block"><i
+									onclick="location.href='${root}/qna/list'" style="display: block"><i
 									class="bi bi-question-circle"></i>&nbsp;Q&A</span> <span
 									onclick="location.href='${root}/login/logoutprocess'"
 									style="display: block"><i class="bi bi-door-closed"></i>&nbsp;LOGOUT</span>

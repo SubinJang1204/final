@@ -1,0 +1,135 @@
+.main {
+  width: 100%;
+}
+
+.shop {
+  font-size: 0;
+}
+.shop p {
+  margin: 0;
+}
+.shop .shop-search .shop-search-box {
+  position: relative;
+  max-width: 720px;
+  padding: 40px 60px;
+  margin: 0 auto;
+}
+.shop .shop-search .shop-search-box input {
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  padding: 12px;
+  
+  border: none;
+  border-bottom: 2px solid #000;
+}
+.shop .shop-search .shop-search-box .shop-search-suggest {
+  position: absolute;
+  display: none;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 400px;
+  border: 1px solid #ddd;
+  box-shadow: 0 5px 15px #eee;
+  overflow: auto;
+}
+.shop .shop-search .shop-search-box .shop-search-suggest > div {
+  padding: 8px;
+}
+.shop .shop-search .shop-search-box .shop-search-suggest .shop-suggest-item {
+  display: flex;
+  padding: 8px;
+}
+.shop .shop-search .shop-search-box .shop-search-suggest .shop-suggest-item picture {
+  display: flex;
+  flex-basis: 40px;
+  margin-right: 8px;
+}
+.shop .shop-search .shop-search-box .shop-search-suggest .shop-suggest-item picture::before {
+  content: "";
+  padding-bottom: 100%;
+}
+.shop .shop-search .shop-search-box .shop-search-suggest .shop-suggest-item .shop-suggest-text p:nth-child(1) {
+  font-size: 14px;
+}
+.shop .shop-search .shop-search-box .shop-search-suggest .shop-suggest-item .shop-suggest-text p:nth-child(2) {
+  font-size: 12px;
+}
+.shop .shop-category {
+  display: flex;
+  max-width: 1280px;
+  padding: 30px 60px;
+  margin: 0 auto;
+}
+.shop .shop-category .shop-category-item label {
+  padding: 0 12px;
+  cursor: pointer;
+}
+.shop .shop-category .shop-category-item label input[type=checkbox] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+.shop .shop-category .shop-category-item label span {
+  font-size: 18px;
+}
+.shop .shop-category .shop-category-item label input[type=checkbox]:checked ~ span {
+  font-weight: 700;
+}
+.shop .shop-category .shop-category-item label input[type=checkbox]:focus ~ span {
+  outline: -webkit-focus-ring-color auto 1px;
+}
+.shop .shop-content {
+  display: flex;
+  max-width: 1280px;
+  padding: 30px 60px;
+  margin: 0 auto;
+}
+.shop .shop-content .shop-filter {
+  width: 200px;
+  margin-right: 20px;
+}
+.shop .shop-content .shop-filter .shop-label {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.shop .shop-content .shop-filter .filter {
+  position: relative;
+}
+.shop .shop-content .shop-filter .filter .filter-name {
+  font-size: 14px;
+}
+.shop .shop-content .shop-filter .filter .filter-text {
+  font-size: 14px;
+}
+.shop .shop-content .shop-filter .filter button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+.shop .shop-content .shop-filter .filter .btn-filter {
+  position: absolute;
+  top: 0;
+  right: 5px;
+}
+.shop .shop-content .shop-filter .filter .btn-filter i {
+  font-size: 18px;
+}
+.shop .shop-content .shop-filter .filter .btn-filter .bi-dash {
+  display: none;
+}
+.shop .shop-content .shop-filter .filter.active .btn-filter .bi-plus {
+  display: none;
+}
+.shop .shop-content .shop-filter .filter.active .btn-filter .bi-dash {
+  display: inline;
+}
+.shop .shop-content .shop-list-wrapper {
+  flex: 1;
+}
+
+/*# sourceMappingURL=shop.list.css.map */

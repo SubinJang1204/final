@@ -122,25 +122,25 @@
 		<div class="f_link" style="z-index: 1000;">
 			<div class="links">
 				<div class="scale">
-					<img src="../image/8.png" onclick="location.href='../shop/list'">
+					<img src="../image/q8.png" onclick="location.href='../shop/list'">
 				</div>
 				<caption>전체 상품</caption>
 			</div>
 			<div class="links">
 				<div class="scale">
-					<img src="../image/1.png">
+					<img src="../image/q1.png">
 				</div>
 				<caption>여성별 인기상품</caption>
 			</div>
 			<div class="links">
 				<div class="scale">
-					<img src="../image/2.png">
+					<img src="../image/q2.png">
 				</div>
 				<caption>남성별 인기상품</caption>
 			</div>
 			<div class="links">
 				<div class="scale">
-					<img src="../image/4.png">
+					<img src="../image/q4.png">
 				</div>
 				<caption>전체 인기 상품</caption>
 			</div>
@@ -148,25 +148,25 @@
 			<br>
 			<div class="links" onclick="location.href='../sns/list'">
 				<div class="scale">
-					<img src="../image/9.png">
+					<img src="../image/q9.png">
 				</div>
 				<caption>SNS</caption>
 			</div>
 			<div class="links" onclick="location.href='../event/list'">
 				<div class="scale">
-					<img src="../image/15.png">
+					<img src="../image/q15.png">
 				</div>
 				<caption>EVENT</caption>
 			</div>
 			<div class="links" onclick="location.href=''">
 				<div class="scale">
-					<img src="../image/16.png">
+					<img src="../image/q16.png">
 				</div>
 				<caption>동네 게시판</caption>
 			</div>
 			<div class="links" onclick="location.href='../qna/list'">
 				<div class="scale">
-					<img src="../image/10.png">
+					<img src="../image/q10.png">
 				</div>
 				<caption>고객센터</caption>
 			</div>

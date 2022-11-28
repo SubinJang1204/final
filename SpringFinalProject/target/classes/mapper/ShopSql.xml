@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boot.sist.mapper.ShopMapperInter">
+	<select id="getShop" parameterType="string" resultType="shop">
+	SELECT * FROM shop WHERE shopnum=#{shopnum}
+	</select>
+	
+	<select id="getStyleReviewList" parameterType="StyleReviewListEntity" resultType="StyleReviewDto">
+	SELECT sb.num num, sb.user_id user_id, content, user_photo, style_photo, COUNT(sbl.memberNum) likes, COUNT(sa.num) comments
+		FROM styleBoard sb
+	    LEFT JOIN styleAnswer sa ON sb.num = sa.que_num
+	    LEFT JOIN styleBoardLike sbl ON sb.num = sbl.styleNum
+	    WHERE
+	    	shopNum = #{shopNum}
+	    GROUP BY sb.num
+	    ORDER BY sb.num DESC
+	    LIMIT #{offset}, #{length}
+	</select>
+	
+	<select id="getStyleReviewListCount" parameterType="string" resultType="int">
+	SELECT COUNT(sb.num) count
+		FROM styleBoard sb
+	    WHERE
+	    	shopNum = #{shopNum}
+	</select>
+	
+	<insert id="addStyleReview" parameterType="StyleReviewEntity">
+	INSERT INTO styleBoard
+		(shopNum, user_id, content, user_photo, style_photo, likes, releases) VALUES
+		(
+			#{shopNum},
+			#{user_id},
+			#{content},
+			#{user_photo},
+			#{style_photo},
+			0,
+			CURRENT_TIMESTAMP()
+		)
+	</insert>
+</mapper>
