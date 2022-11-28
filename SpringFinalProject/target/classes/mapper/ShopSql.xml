@@ -2,12 +2,140 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boot.sist.mapper.ShopMapperInter">
-	<select id="getShop" parameterType="string" resultType="shop">
-	SELECT * FROM shop WHERE shopnum=#{shopnum}
+	<select id="getShopList" parameterType="ShopListEntity" resultType="ShopListDto">
+	SELECT shop.shopnum shopnum, sangpum, category, sub_category, photo, price, COUNT(DISTINCT si.memberNum) bookmarks, COUNT(DISTINCT sb.num) reviews
+		FROM shop
+		LEFT JOIN shopInterest si ON shop.shopnum = si.shopNum
+		LEFT JOIN styleBoard sb ON shop.shopnum = sb.shopNum
+		<trim prefix="WHERE" prefixOverrides="AND ">
+			<if test="!category.isEmpty()">
+				AND 
+				(
+					<foreach item="item" collection="category" open="category IN (" separator="," close=")">#{item}</foreach>
+					OR
+					<foreach item="item" collection="category" open="sub_category IN (" separator="," close=")">#{item}</foreach>
+				)
+			</if>
+			<if test="!price.isEmpty()">
+				AND 
+				(
+					<foreach item="item" collection="price" separator=" OR ">
+						<if test="item eq 1">
+							(price <![CDATA[<=]]> 100000)
+						</if>
+						<if test="item eq 2">
+							(price <![CDATA[>=]]> 100000 AND price <![CDATA[<=]]> 300000)
+						</if>
+						<if test="item eq 3">
+							(price <![CDATA[>=]]> 300000 AND price <![CDATA[<=]]> 500000)
+						</if>
+						<if test="item eq 4">
+							(price <![CDATA[>=]]> 500000)
+						</if>
+					</foreach>
+				)
+			</if>
+			<if test="!''.equals(searchWord)">
+				AND 
+				sangpum LIKE '%${searchWord}%'
+			</if>
+		</trim>
+		GROUP BY shop.shopnum
+		ORDER BY
+			<choose>
+				<when test="sort == 2">
+					reviews DESC
+				</when>
+				<otherwise>
+					shopnum DESC
+				</otherwise>
+			</choose>
+		LIMIT #{offset}, #{length}
 	</select>
 	
+	<select id="getShopListCount" parameterType="ShopListEntity" resultType="int">
+	SELECT COUNT(shopnum)
+		FROM shop
+		<trim prefix="WHERE" prefixOverrides="AND ">
+			<if test="!category.isEmpty()">
+				AND 
+				(
+					<foreach item="item" collection="category" open="category IN (" separator="," close=")">#{item}</foreach>
+					OR
+					<foreach item="item" collection="category" open="sub_category IN (" separator="," close=")">#{item}</foreach>
+				)
+			</if>
+			<if test="!price.isEmpty()">
+				AND 
+				(
+					<foreach item="item" collection="price" separator=" OR ">
+						<if test="item eq 1">
+							(price <![CDATA[<=]]> 100000)
+						</if>
+						<if test="item eq 2">
+							(price <![CDATA[>=]]> 100000 AND price <![CDATA[<=]]> 300000)
+						</if>
+						<if test="item eq 3">
+							(price <![CDATA[>=]]> 300000 AND price <![CDATA[<=]]> 500000)
+						</if>
+						<if test="item eq 4">
+							(price <![CDATA[>=]]> 500000)
+						</if>
+					</foreach>
+				)
+			</if>
+			<if test="!''.equals(searchWord)">
+				AND 
+				sangpum LIKE '%${searchWord}%'
+			</if>
+		</trim>
+	</select>
+	
+	<select id="getShopListSearch" parameterType="String" resultType="ShopListSearchDto">
+	SELECT shopnum, sangpum, category, sub_category, photo
+		FROM shop
+		WHERE
+			sangpum LIKE '%${searchWord}%'
+		LIMIT 0, 10
+	</select>
+	
+	<select id="getShop" parameterType="ShopEntity" resultType="Shop">
+	SELECT shop.shopnum, sangpum, category, sub_category, detail_photo, price, sangpumsize, model, color, DATE_FORMAT(releases, '%Y-%m-%d') releases, COUNT(DISTINCT si.memberNum) likes, COUNT(DISTINCT CASE WHEN si.memberNum = #{memberNum} THEN 1 END) isLike
+		FROM shop
+		LEFT JOIN shopInterest si ON shop.shopnum = si.shopNum
+		WHERE
+			shop.shopnum = #{shopNum}
+		ORDER BY shop.shopnum
+	</select>
+	
+	<select id="getShopLike" parameterType="ShopLikeEntity" resultType="int">
+	SELECT COUNT(shopNum)
+		FROM shopInterest
+		WHERE
+			memberNum = #{memberNum}
+			AND shopNum = #{shopNum}
+	</select>
+	
+	<select id="getShopLikeCount" parameterType="String" resultType="int">
+	SELECT COUNT(memberNum)
+		FROM shopInterest
+		WHERE
+			shopNum = #{shopNum}
+	</select>
+	
+	<insert id="setShopLike" parameterType="ShopLikeEntity">
+	INSERT INTO shopInterest VALUES (#{memberNum}, #{shopNum})
+	</insert>
+	
+	<delete id="unsetShopLike" parameterType="ShopLikeEntity">
+	DELETE FROM shopInterest
+		WHERE
+			memberNum = #{memberNum}
+			AND shopNum = #{shopNum}
+	</delete>
+	
 	<select id="getStyleReviewList" parameterType="StyleReviewListEntity" resultType="StyleReviewDto">
-	SELECT sb.num num, sb.user_id user_id, content, user_photo, style_photo, COUNT(sbl.memberNum) likes, COUNT(sa.num) comments
+	SELECT sb.num num, sb.user_id user_id, content, user_photo, style_photo, COUNT(DISTINCT sbl.memberNum) likes, COUNT(DISTINCT sa.num) comments
 		FROM styleBoard sb
 	    LEFT JOIN styleAnswer sa ON sb.num = sa.que_num
 	    LEFT JOIN styleBoardLike sbl ON sb.num = sbl.styleNum
@@ -18,14 +146,14 @@
 	    LIMIT #{offset}, #{length}
 	</select>
 	
-	<select id="getStyleReviewListCount" parameterType="string" resultType="int">
+	<select id="getStyleReviewListCount" parameterType="String" resultType="int">
 	SELECT COUNT(sb.num) count
 		FROM styleBoard sb
 	    WHERE
 	    	shopNum = #{shopNum}
 	</select>
 	
-	<insert id="addStyleReview" parameterType="StyleReviewEntity">
+	<insert id="addStyleReview" parameterType="StyleReviewInsertEntity">
 	INSERT INTO styleBoard
 		(shopNum, user_id, content, user_photo, style_photo, likes, releases) VALUES
 		(
@@ -38,4 +166,59 @@
 			CURRENT_TIMESTAMP()
 		)
 	</insert>
+	
+	<select id="getStyleReview" parameterType="StyleReviewEntity" resultType="StyleReviewDto">
+	SELECT sb.num num, sb.user_id, user_photo, style_photo, content, COUNT(DISTINCT memberNum) likes, COUNT(DISTINCT CASE WHEN memberNum = #{memberId} THEN 1 END) isLike, COUNT(DISTINCT sa.num) comments, DATE_FORMAT(releases, '%Y-%m-%d') releases
+		FROM styleBoard sb
+	    LEFT JOIN styleAnswer sa ON sb.num = sa.que_num
+	    LEFT JOIN styleBoardLike sbl ON sb.num = sbl.styleNum
+	    WHERE
+	    	sb.num = #{styleReviewId}
+	</select>
+	
+	<select id="getStyleReviewComment" parameterType="StyleReviewEntity" resultType="StyleReviewCommentDto">
+	SELECT sa.user_id, m_photo, ans_content, DATE_FORMAT(an_writeday, '%Y-%m-%d') releases
+		FROM styleBoard sb
+		LEFT JOIN styleAnswer sa ON sb.num = sa.que_num
+		WHERE
+			sa.que_num = #{styleReviewId}
+		ORDER BY sa.num DESC
+	</select>
+	
+	<insert id="addStyleReviewComment" parameterType="StyleReviewCommentEntity">
+	INSERT INTO styleAnswer (user_id, m_photo, ans_content, an_writeday, que_num) VALUES
+		(
+			#{user_id},
+			#{m_photo},
+			#{ans_content},
+			CURRENT_TIMESTAMP(),
+			#{que_num}
+		)
+	</insert>
+	
+	<select id="getStyleReviewLike" parameterType="StyleReviewEntity" resultType="int">
+	SELECT COUNT(styleNum)
+		FROM styleBoardLike
+		WHERE
+			memberNum = #{memberId}
+			AND styleNum = #{styleReviewId}
+	</select>
+	
+	<select id="getStyleReviewLikeCount" parameterType="String" resultType="int">
+	SELECT COUNT(memberNum)
+		FROM styleBoardLike
+		WHERE
+			styleNum = #{styleNum}
+	</select>
+	
+	<insert id="setStyleReviewLike" parameterType="StyleReviewEntity">
+	INSERT INTO styleBoardLike VALUES (#{memberId}, #{styleReviewId})
+	</insert>
+	
+	<delete id="unsetStyleReviewLike" parameterType="StyleReviewEntity">
+	DELETE FROM styleBoardLike
+		WHERE
+			memberNum = #{memberId}
+			AND styleNum = #{styleReviewId}
+	</delete>
 </mapper>

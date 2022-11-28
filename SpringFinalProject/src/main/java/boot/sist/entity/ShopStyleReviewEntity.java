@@ -9,9 +9,6 @@ import lombok.Data;
 @AllArgsConstructor
 @Alias("StyleReviewEntity")
 public class ShopStyleReviewEntity {
-	private String shopNum;
-	private String user_id;
-	private String content;
-	private String user_photo;
-	private String style_photo;
+	private String memberId;
+	private String styleReviewId;
 }

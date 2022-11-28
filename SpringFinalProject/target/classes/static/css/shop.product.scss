@@ -352,6 +352,7 @@
 		
 		.shop-label {
 			font-weight: 700;
+<<<<<<< HEAD
 			font-size: 30px;
 		}
 		
@@ -495,6 +496,363 @@
 		background-color: rgba(0, 0, 0, 0.75);
 		
 		overflow: auto;
+=======
+			font-size: 24px;
+		}
+		
+		.btn-review {
+			position: absolute;
+			top: 30px;
+			right: 70px;
+			
+			font-size: 16px;
+			
+			padding: 7px 20px;
+			
+			border: none;
+			border-radius: 5px;
+			color: #fff;
+			background-color: #997a76;
+			
+			&:hover {
+				background-color: #83605c;
+			}
+		}
+	}
+	
+	.style-review-list {
+		display: flex;
+		flex-wrap: wrap;
+		
+		margin-top: 20px;
+		
+		.style-review {
+			flex: 0 0 25%;
+			
+			padding: 0 10px;
+			margin-bottom: 20px;
+
+			border: none;
+			background-color: transparent;
+			text-align: left;
+			
+			.review-image {
+				picture {
+					display: flex;
+					
+					border-radius: 10px;
+					
+					overflow: hidden;
+					
+					background-color: #eee;
+					
+					img {
+						width: 100%;
+					}
+					
+					&::before {
+						content: '';
+						padding-bottom: 100%;
+					}
+				}
+			}
+			
+			.review-text {
+				margin-top: 15px;
+				
+				.user-profile {
+					display: flex;
+					
+					img {
+						width: 24px;
+						height: 24px;
+						
+						margin-right: 5px;
+						
+						border-radius: 50%;
+					}
+					
+					span {
+						font-size: 14px;						
+					}
+				}
+				
+				.review {
+					margin-top: 5px;
+					
+					font-size: 14px;
+				}
+				
+				.statistics {
+					display: flex;
+					align-items: center;
+					
+					p {
+						margin-right: 5px;
+					}
+					
+					i {
+						font-size: 18px;
+						margin-right: 5px;
+					}
+					
+					span {
+						font-size: 14px;
+					}
+				}
+			}
+		}
+	}
+	
+	.style-review-action {
+		margin: 40px auto 0;
+		
+		text-align: center;
+		
+		button {
+			font-size: 18px;
+			
+			width: 200px;
+			padding: 5px 0;
+			margin: 0 5px;
+			
+			border: none;
+			background-color: #eee;
+			
+			text-align: center;
+			
+			&:hover {
+				background-color: #ddd;
+			}
+		}
+	}
+	
+	.style-review-detail {
+		position: fixed;
+		top: 0;
+		left: 0;
+		
+		display: none;
+		flex-direction: column;
+		align-items: center;
+		
+		width: 100%;
+		height: 100%;
+		
+		padding: 60px 0;
+		
+		background-color: rgba(0, 0, 0, 0.75);
+		
+		overflow: auto;
+
+		z-index: 2000;
+		
+		&.view {
+			display: flex;
+		}
+		
+		> div {
+			width: 100%;
+			max-width: 600px;
+			
+			margin: auto;
+			
+			padding: 40px;
+			
+			border-radius: 20px;
+			background-color: #fff;
+			
+			> div > strong {
+				display: block;
+				
+				font-size: 30px;
+				
+				margin-bottom: 20px;
+			}
+
+			.review-profile {
+				display: flex;
+				align-items: center;
+
+				img {
+					width: 50px;
+					height: 50px;
+					border-radius: 50%;
+					margin-right: 15px;
+				}
+
+				p {
+					display: flex;
+					flex-direction: column;
+
+					#review-name {
+						font-weight: 700;
+					}
+
+					span {
+						font-size: 14px;
+
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+					}
+				}
+			}
+			
+			.review-image {
+				margin-top: 20px;
+
+				picture {
+					display: flex;
+					flex-direction: column;
+					
+					background-color: #eee;
+				}
+			}
+			
+			.review-content {
+				margin-top: 20px;
+
+				#review-content {
+					font-size: 14px;
+					white-space: pre-wrap;
+				}
+			}
+
+			.review-action {
+				margin-top: 20px;
+
+				button {
+					padding: 0;
+					margin-right: 10px;
+					border: none;
+					background-color: transparent;
+
+					i {
+						font-size: 24px;
+					}
+				}
+
+				.btn-like {
+					i {
+						&:nth-child(2) {
+							display: none;
+						}
+					}
+
+					&.active {
+						i {
+							color: #f97e7e;
+
+							&:nth-child(1) {
+								display: none;
+							}
+							&:nth-child(2) {
+								display: inline;
+							}
+						}
+					}
+				}
+			}
+
+			.review-like,
+			.review-comment {
+				> div:nth-child(1) {
+					p {
+						font-size: 14px;
+					}
+				}
+			}
+
+			.review-comment {
+				.review-comment-list {
+					.review-comment-block {
+						margin-top: 5px;
+
+						img {
+							width: 30px;
+							height: 30px;
+							border-radius: 50%;
+							margin-right: 10px;
+						}
+
+						p {
+							display: flex;
+							flex-direction: column;
+
+							span {
+								font-size: 14px;
+
+								white-space: nowrap;
+								overflow: hidden;
+								text-overflow: ellipsis;
+							}
+						}
+					}
+				}
+
+				.review-comment-action {
+					margin-top: 10px;
+
+					input {
+						display: block;
+						font-size: 14px;
+
+						width: 100%;
+
+						padding: 10px;
+
+						border: none;
+					}
+				}
+			}
+			
+			.action-group {
+				display: flex;
+				justify-content: center;
+				
+				margin-top: 40px;
+				
+				button {
+					flex: 0 0 calc((100% - 20px) / 2);
+					font-size: 20px;
+					
+					padding: 5px 20px;
+					
+					border: none;
+				}
+				
+				.btn-cancel {
+					background-color: #d8d8d8;
+					
+					&:hover {
+						background-color: #c1abab;
+					}
+				}
+			}
+		}
+	}
+	
+	.style-review-form {
+		position: fixed;
+		top: 0;
+		left: 0;
+		
+		display: none;
+		flex-direction: column;
+		align-items: center;
+		
+		width: 100%;
+		height: 100%;
+		
+		padding: 60px 0;
+		
+		background-color: rgba(0, 0, 0, 0.75);
+		
+		overflow: auto;
+
+		z-index: 2000;
+>>>>>>> branch 'ahyun123' of https://github.com/SubinJang1204/final.git
 		
 		&.view {
 			display: flex;

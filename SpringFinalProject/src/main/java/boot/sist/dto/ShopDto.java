@@ -8,22 +8,21 @@ import org.apache.ibatis.type.Alias;
 import lombok.Data;
 
 @Data
-@Alias("shop")
+@Alias("Shop")
 public class ShopDto {
 	private int shopnum;
 	private String sangpum;
 	private String category;
 	private String sub_category;
-	private String photo;
 	private String detail_photo;
 	private int price;
 	private int sangpumsize;
 	private int model;
 	private String color;
 	private int likes;
+	private int isLike;
 	private int temp;
 	private String releases;
-	
 	
 	public String getPriceWithCommas() {
 		StringBuilder builder = new StringBuilder();

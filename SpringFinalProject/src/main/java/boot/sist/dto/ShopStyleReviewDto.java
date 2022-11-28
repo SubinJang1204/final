@@ -13,10 +13,7 @@ public class ShopStyleReviewDto {
 	private String user_photo;
 	private String style_photo;
 	private int likes;
+	private int isLike;
 	private int comments;
-	
-	public String getStylePhoto() {
-		return "/upload/" + style_photo;
-	}
+	private String releases;
 }
-

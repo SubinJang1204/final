@@ -19,7 +19,6 @@ public class FileUploadService {
 	// 경로 설정 추후에 재 적용 필요
 	private final String defaultPath = "src/main/resources/static/upload";
 	
-	
 	public String upload(MultipartFile file) {
 		String fileFullName = null;
 		Path uploadLocation = null;

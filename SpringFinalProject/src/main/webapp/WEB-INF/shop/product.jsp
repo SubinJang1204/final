@@ -5,7 +5,8 @@
 	<div class="shop-info">
 		<div class="shop-image">
 			<picture>
-				<img src="" />
+
+				<img src="${shop.getDetail_photo()}" />
 			</picture>
 		</div>
 		<div class="shop-detail">
@@ -14,6 +15,9 @@
 				<p class="shop-title">${shop.getSangpum()}</p>
 				<p class="shop-category">${shop.getCategory()} &gt; ${shop.getSub_category()}</p>
 				<div class="shop-price">
+					<p>사이즈</p>
+				</div>
+				<div class="shop-price">
 					<p>판매가</p>
 					<p><strong>${shop.getPriceWithCommas()}</strong>원</p>
 				</div>
@@ -21,7 +25,7 @@
 			<div class="shop-action">
 				<button class="btn-cart" type="button">장바구니 등록</button>
 				<button class="btn-buy" type="button">바로 구매</button>
-				<button class="btn-interest" type="button"><i class="bi bi-bookmark"></i><i class="bi bi-bookmark-fill"></i> 관심상품 ${shop.getLikes()}</button>
+				<button class="btn-interest<c:if test="${shop.getIsLike() != 0}"> active</c:if>" type="button"><i class="bi bi-bookmark"></i><i class="bi bi-bookmark-fill"></i> 관심상품 <span id="like">${shop.getLikes()}</span></button>
 			</div>
 			<div class="shop-content">
 				<p class="shop-labeltext">상품 정보</p>
@@ -48,7 +52,7 @@
 					<div class="shop-delivery-list">
 						<div class="shop-delivery">
 							<picture>
-								<img src="" />
+								<img src="../image/dlfqks.png" />
 							</picture>
 							<div class="shop-delivery-text">
 								<p><strong>일반배송</strong> 3,000원</p>
@@ -57,7 +61,7 @@
 						</div>
 						<div class="shop-delivery">
 							<picture>
-								<img src="" />
+								<img src="../image/qothd.png" />
 							</picture>
 							<div class="shop-delivery-text">
 								<p><strong>빠른배송</strong> 5,000원</p>
@@ -103,7 +107,7 @@
 
 <b>검수 결과는 불합격•검수 보류•합격의 세가지 상태로 결과가 변경됩니다.</b>
 
-* 검수 합격: {프로젝트명} 검수택(Tag)이 부착되어 배송을 준비함
+* 검수 합격: {3조프로젝트명} 검수택(Tag)이 부착되어 배송을 준비함
 * 검수 보류: 앱에서 사진으로 상품의 상태 확인 및 구매 여부를 선택. (24시간 이후 자동 검수 합격)
 * 검수 불합격: 즉시 거래가 취소되고 구매하신 금액을 환불 처리함.(환불 수단은 결제 수단과 동일)</div>
 					</div>
@@ -113,28 +117,28 @@
 							<i class="bi bi-caret-down"></i>
 							<i class="bi bi-caret-up"></i>
 						</button>
-						<div class="shop-notice-detail"><b>{프로젝트명}은 익명 거래를 기반으로 판매자가 판매하는 상품을 구매자가 실시간으로 구매하여 거래를 체결합니다.</b>
+						<div class="shop-notice-detail"><b>{3조 프로젝트}은 익명 거래를 기반으로 판매자가 판매하는 상품을 구매자가 실시간으로 구매하여 거래를 체결합니다.</b>
 
-- 단순 변심이나 실수에 의한 취소/교환/반품이 불가능합니다. 상품을 원하지 않으시는 경우 언제든지 {프로젝트명}에서 재판매를 하실 수 있습니다.
+- 단순 변심이나 실수에 의한 취소/교환/반품이 불가능합니다. 상품을 원하지 않으시는 경우 언제든지 {3조 프로젝트}에서 재판매를 하실 수 있습니다.
 - 상품 수령 후, 이상이 있는 경우 {프로젝트명} 고객센터로 문의해주시기 바랍니다.</div>
 					</div>
 					<div class="shop-notice-info">
 						<div class="shop-notice-item">
-							<img src="" />
+							<img src="../image/3x.png" />
 							<div class="shop-notice-text">
 								<p><strong>100% 정품 보증</strong></p>
 								<p>검수한 상품이 정품이 아닐 경우, 구매가의 3배를 보상합니다.</p>
 							</div>
 						</div>
 						<div class="shop-notice-item">
-							<img src="" />
+							<img src="../image/cpzm.png" />
 							<div class="shop-notice-text">
 								<p><strong>엄격한 다중 검수</strong></p>
 								<p>모든 상품은 검수센터에 도착한 후, 상품별 전문가 그룹의 체계적인 시스템을 거쳐 검수를 진행합니다.</p>
 							</div>
 						</div>
 						<div class="shop-notice-item">
-							<img src="" />
+							<img src="../image/zmfla.png" />
 							<div class="shop-notice-text">
 								<p><strong>정품 인증 패키지</strong></p>
 								<p>검수에 합격한 경우에 한하여 정품 인증 패키지가 포함된 상품이 배송됩니다.</p>
@@ -149,7 +153,7 @@
 		</div>
 	</div>
 	<div class="shop-section">
-		<p class="shop-label">스타일 리뷰 (${styleReviewListCount})</p>
+		<p class="shop-label">스타일 ${styleReviewListCount}</p>
 	<%
 		String memberId = (String) session.getAttribute("myid");
 		
@@ -164,10 +168,10 @@
 		<input type="hidden" id="styleReviewListCount" value="${styleReviewListCount}" />
 		<div class="style-review-list">
 		<c:forEach var="styleReview" items="${styleReviewList}">
-			<div class="style-review">
+			<button class="style-review" data-id="${styleReview.getNum()}">
 				<div class="review-image">
 					<picture>
-						<img src="${styleReview.getStylePhoto()}" />
+						<img src="${styleReview.getStyle_photo()}" />
 					</picture>
 				</div>
 				<div class="review-text">
@@ -187,7 +191,7 @@
 						</p>
 					</div>
 				</div>
-			</div>
+			</button>
 		</c:forEach>
 		</div>
 	<c:if test="${(styleReviewListPage + 1) * styleReviewListPageLength < styleReviewListCount}">
@@ -195,7 +199,7 @@
 			<button class="btn-learn-more">더보기</button>
 		</div>
 		<script type="text/template" id="styleReview">
-			<div class="style-review">
+			<button class="style-review" data-id="{num}">
 				<div class="review-image">
 					<picture>
 						<img src="{stylePhoto}" />
@@ -218,9 +222,66 @@
 						</p>
 					</div>
 				</div>
-			</div>
+			</button>
 		</script>
 	</c:if>
+		<div class="style-review-detail">
+			<div>
+				<strong>스타일 후기</strong>
+				<input type="hidden" id="review-id" />
+				<div class="review-profile">
+					<img id="review-profile" src="" />
+					<p>
+						<span id="review-name"></span>
+						<span id="review-date"></span>
+					</p>
+				</div>
+				<div class="review-image">
+					<picture>
+						<img id="review-image" src="" />
+					</picture>
+				</div>
+				<div class="review-content">
+					<div id="review-content"></div>
+				</div>
+				<div class="review-action">
+					<button class="btn-like">
+						<i class="bi bi-emoji-smile"></i>
+						<i class="bi bi-emoji-smile-fill"></i>
+					</button>
+					<button class="btn-comment"><i class="bi bi-chat"></i></button>
+				</div>
+				<div class="review-like">
+					<div>
+						<p>공감 <span id="review-likes">0</span>개</p>
+					</div>
+				</div>
+				<div class="review-comment">
+					<div>
+						<p>댓글 <span id="review-comments">0</span>개</p>
+					</div>
+					<div class="review-comment-list"></div>
+					<div class="review-comment-action">
+						<input type="text" id="review-comment" placeholder="댓글 입력" />
+					</div>
+				</div>
+				<div class="action-group">
+					<button class="btn-cancel">닫기</button>
+				</div>
+			</div>
+		</div>
+		<script type="text/template" id="commentBlock">
+			<div class="review-comment-block">
+				<div class="review-profile">
+					<img src="{m_photo}" />
+					<p>
+						<span><strong>{user_id}</strong> {ans_content}</span>
+						<span>{releases}</span>
+					</p>
+				</div>
+			</div>
+		</script>
+
 		<div class="style-review-form">
 			<div class="insert-form">
 				<strong>스타일 후기 등록</strong>
