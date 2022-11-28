@@ -85,7 +85,7 @@
 					<picture>
 						<img src="/image/filter-shoes.png" />
 					</picture>
-					<span>신박한</span>
+					<span>아이템5</span>
 				</button>
 			</div>
 			<div class="shop-category-items">
