@@ -29,6 +29,7 @@
 			<div class="shop-content">
 				<p class="shop-labeltext">상품 정보</p>
 				<div class="shop-info-content">
+					
 					<p>
 						<span>모델번호</span>
 						<span>${shop.getModel()}</span>
