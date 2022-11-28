@@ -262,6 +262,35 @@ $(function() {
 		
 		const element = $(templateHTML);
 		
+		if (comment.num) {
+			const commentId = element.attr('data-comment-id');
+			
+			element.removeAttr('data-comment-id');
+			element.on('click', '.btn-delete', function() {
+				if (confirm('정말 삭제하시겠습니까?')) {
+					const id = reviewId.val();
+					$.ajax({
+						method: 'DELETE',
+						url: `/shop/${shopId}/style/${id}/comment/${commentId}`,
+						dataType: 'json',
+						success: (response) => {
+							if (response.message) {
+								alert(response.message);
+							}
+							
+							clearStyleReview();
+							loadStyleReview(id);
+						},
+						error: (reason) => {
+							location.href = '/login/main';
+						}
+					});
+				}
+			});
+		} else {
+			element.find('.btn-delete').remove();
+		}
+		
 		styleReviewCommentList.append(element);
 	}
 
