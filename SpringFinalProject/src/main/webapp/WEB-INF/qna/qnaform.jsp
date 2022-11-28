@@ -59,7 +59,7 @@ font-family: 'Gowun Dodum', sans-serif;
 				<td colspan="4" align="center">
 					<button type="button" class="btn btn-warning"
 						style="width: 120px;"
-						onclick="submitContents(this)">DB저장</button>
+						onclick="submitContents(this)">등록</button>
 					
 					<button type="button" class="btn btn-warning"
 						style="width: 120px;"

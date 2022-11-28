@@ -30,4 +30,8 @@
 	<update id="insertAnswer" parameterType="qnaboard">
 		UPDATE qnaboard SET answer=#{answer} WHERE num=#{num}
 	</update>
+	
+	<update id="updateAnswer" parameterType="qnaboard">
+		UPDATE qnaboard SET answer=#{answer} WHERE num=#{num}
+	</update>
 </mapper>

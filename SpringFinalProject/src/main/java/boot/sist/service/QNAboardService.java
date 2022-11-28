@@ -62,5 +62,11 @@ public class QNAboardService implements QNAboardServiceInter {
 
 		mapperInter.insertAnswer(dto);
 	}
-	
+
+	@Override
+	public void updateAnswer(QNAboardDto dto) {
+
+		mapperInter.updateAnswer(dto);
+	}
+
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import boot.sist.dto.QNAboardDto;
@@ -174,5 +175,27 @@ public class QNAboardController {
 		mav.setViewName("redirect:detail");
 		
 		return mav;
+	}
+	
+	
+	@GetMapping("/qna/upform")
+	@ResponseBody
+	public String upform(@RequestParam String num) {
+		
+		String answer = service.getData(num).getAnswer();
+		
+		return answer;
+	}
+	
+	
+	@GetMapping("/qna/ansupdate")
+	@ResponseBody
+	public void updateanswer(@RequestParam String answer, @RequestParam String num) {
+		
+		QNAboardDto dto = new QNAboardDto();
+		dto.setAnswer(answer);
+		dto.setNum(num);
+		
+		service.updateAnswer(dto);
 	}
 }

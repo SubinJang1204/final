@@ -17,9 +17,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
  
 <style type="text/css">
-*{
-font-family: 'Gowun Dodum', sans-serif;
-}
+	*{
+		font-family: 'Gowun Dodum', sans-serif;
+	}
 </style>
 
 <script type="text/javascript">
@@ -37,6 +37,48 @@ font-family: 'Gowun Dodum', sans-serif;
 				location.href="delete?currentPage=" + currentPage + "&num=" + num;
 			}
 			
+		});
+		
+		
+		$("#answerupdate").click(function(){
+			
+			var num = $(this).attr("num");
+			// alert(num);
+			
+			$.ajax({
+				
+				type: "get",
+				dataType: "html",
+				url: "upform",
+				data: {"num":num},
+				success: function(answer){
+					
+					var update = '<div class="row"><textarea style="width: 80%; height: 100px;" name="answer" required="required" class="form-control newandwer">' + answer + '</textarea>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" num="' + num + '" class="btn btn-primary upbtn" style="width: 15%; height: 100px;">수정</button></div>';
+					
+					$(".showans").html(update);
+					
+				}
+			});
+		});
+		
+		
+		$(document).on("click","button.upbtn",function(){
+			
+			var num = $(this).attr("num");
+			var answer = $(".newandwer").val();
+			// alert(num + ", " + answer);
+			
+			$.ajax({
+				
+				type: "get",
+				dataType: "html",
+				url: "ansupdate",
+				data: {"num":num, "answer":answer},
+				success: function(){
+					
+					location.reload();
+				}
+			});
 		});
 	});
 </script>
@@ -84,6 +126,7 @@ font-family: 'Gowun Dodum', sans-serif;
 								</td>
 								<td style="width: 15%">
 									<button type="submit" class="btn btn-primary btnaadd" style="width: 100%; height: 70px;">등록</button>
+									<!-- <button type="button" class="btn btn-primary btnaadd" style="width: 100%; height: 70px;">등록</button> -->
 								</td>
 							</form>
 						</div>
@@ -98,11 +141,16 @@ font-family: 'Gowun Dodum', sans-serif;
 				
 				<c:if test="${ dto.answer != 'noAnswer' }">
 					<td>
-						<strong style="font-size: 20px;">[관리자 답변]</strong>
+						<div class="showans">
+							<strong style="font-size: 20px;">[관리자 답변]</strong>
+							<c:if test="${ sessionScope.myid == 'admin' }">
+								<i num="${ dto.num }" class="bi bi-pencil-square" style="cursor: pointer;" id="answerupdate"></i>
+							</c:if>
 						
-						<br>
+							<br>
 						
-						<pre style="background-color: white; font-size: 15px; margin-left: 10px;">${ dto.answer }</pre>
+							<pre style="background-color: white; font-size: 15px; margin-left: 10px;" id="ans">${ dto.answer }</pre>
+						</div>
 					</td>
 				</c:if>
 			</tr>

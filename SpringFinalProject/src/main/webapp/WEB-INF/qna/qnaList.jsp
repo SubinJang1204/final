@@ -130,7 +130,7 @@ font-family: 'Gowun Dodum', sans-serif;
 							<td>
 								${ dto.subject }
 								<c:if test="${ dto.answer != 'noAnswer' }">
-									<b style="color:blue; font-size: 0.7em;">[답변완료]</b>
+									<b style="color:blue; font-size: 0.7em;"><a href="detail?num=${ dto.num }&currentPage=${ currentPage }#ans" style="text-decoration: none;">[답변완료]</a></b>
 								</c:if>
 							</td>
 							<td style="text-align: center;">${ dto.id }</td>
