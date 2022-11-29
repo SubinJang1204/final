@@ -24,8 +24,11 @@
 	<button class="liNav selected" onclick="location.href='list'">Re-sell Market</button>
 </ul>
 
+<input type="hidden" value="${myid }" id="thisId">
+
 <div class="d-md-flex justify-content-md-end pe-5">
 	<button type="button" id="writeresell" class="btn btn-outline-dark btn-lg writeresell">판매하기</button>
+	<button type="button" class="ms-2 btn btn-outline-dark btn-lg writeresell" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">채팅방 열기</button>
 </div><br>
 
 <section style="width: 100%; max-width:1000px;  margin: auto;" class="container" >
@@ -55,7 +58,7 @@
           </div>
           <div class="mb-3">
             <label for="price" class="col-form-label">Price:</label>
-            <input type="text" class="form-control" name="price" id="price">
+            <input type="text" class="form-control" name="price" id="price" placeholder="상품 가격을 입력하세요">
           </div>
           <div class="mb-3">
             <label for="content" class="col-form-label">Content:</label>
@@ -75,13 +78,33 @@
 
 <!-- 사이드 바 start -->
 <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" 
-	tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width: 30%;">
+	tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width: 40%;">
   <div class="offcanvas-header">
-    <h5 id="offcanvasRightLabel">Chatting</h5>
+    <h5 id="offcanvasRightLabel">${sessionScope.myid }님의 Chatting List</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
- 	<!-- 채팅 목록 -->
+ 	<div class="chatList">
+ 	</div>
+	
+	<!-- 채팅방 start-->
+	<!-- <div class="Container">
+		<h1>채팅방</h1>
+		<div id="roomContainer" class="roomContainer">
+			<table id="roomList" class="roomList"></table>
+		</div>
+		<div>
+			<table class="inputTable">
+				<tr>
+					<th>방 제목</th>
+					<th><input type="text" name="roomName" id="roomName"></th>
+					<th><button id="createRoom">방 만들기</button></th>
+				</tr>
+			</table>
+		</div>
+	</div> -->
+ 	<!-- 채팅방 end-->
+ 	
   </div>
 </div>
 <!-- 사이드 바 end -->
