@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +32,7 @@ import boot.sist.dto.ShopStyleReviewDto;
 import boot.sist.entity.ShopEntity;
 import boot.sist.entity.ShopLikeEntity;
 import boot.sist.entity.ShopListEntity;
+import boot.sist.entity.ShopStyleReviewCommentDeleteEntity;
 import boot.sist.entity.ShopStyleReviewCommentEntity;
 import boot.sist.entity.ShopStyleReviewEntity;
 import boot.sist.entity.ShopStyleReviewInsertEntity;
@@ -253,6 +255,14 @@ public class ShopController {
 		ShopStyleReviewDto styleReview = shopService.getStyleReview(styleReviewEntity);
 		List<ShopStyleReviewCommentDto> styleReviewComment = shopService.getStyleReviewComment(styleReviewEntity);
 		
+		String userId = (String) session.getAttribute("myid");
+
+		for (ShopStyleReviewCommentDto comment : styleReviewComment) {
+			if (!userId.equals(comment.getUser_id())) {
+				comment.setNum(null);
+			}
+		}
+		
 		map.put("review", styleReview);
 		map.put("comments", styleReviewComment);
 		
@@ -321,6 +331,41 @@ public class ShopController {
 		}
 		
 		map.put("message", "등록되었습니다.");
+
+		return ResponseEntity
+				.ok()
+				.body(map);
+	}
+	
+	@DeleteMapping("/{shopId}/style/{styleId}/comment/{commentId}")
+	public ResponseEntity<Map<String, Object>> styleReviewCommentApi(
+				@PathVariable("commentId") String commentId,
+				HttpSession session
+			) {
+		Map<String, Object> map = new HashMap<>();
+		
+		String memberId = (String) session.getAttribute("loginid");
+		if ("".equals(memberId) || memberId == null) {
+			map.put("message", "로그인 후 이용해주세요.");
+			return ResponseEntity
+					.badRequest()
+					.body(map);
+		}
+		
+		String userName = (String) session.getAttribute("myid");
+		
+		ShopStyleReviewCommentDeleteEntity styleReviewCommentDeleteEntity = new ShopStyleReviewCommentDeleteEntity(commentId, userName);
+		
+		Boolean result = shopService.removeStyleReviewComment(styleReviewCommentDeleteEntity);
+		
+		if (!result) {
+			map.put("message", "댓글 삭제 중 문제가 발생했습니다.");
+			return ResponseEntity
+					.badRequest()
+					.body(map);
+		}
+		
+		map.put("message", "삭제되었습니다.");
 
 		return ResponseEntity
 				.ok()

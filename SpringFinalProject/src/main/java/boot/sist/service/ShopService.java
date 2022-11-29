@@ -13,6 +13,7 @@ import boot.sist.dto.ShopStyleReviewDto;
 import boot.sist.entity.ShopEntity;
 import boot.sist.entity.ShopLikeEntity;
 import boot.sist.entity.ShopListEntity;
+import boot.sist.entity.ShopStyleReviewCommentDeleteEntity;
 import boot.sist.entity.ShopStyleReviewCommentEntity;
 import boot.sist.entity.ShopStyleReviewEntity;
 import boot.sist.entity.ShopStyleReviewInsertEntity;
@@ -93,6 +94,11 @@ public class ShopService implements ShopServiceInter {
 	@Override
 	public Boolean addStyleReviewComment(ShopStyleReviewCommentEntity styleReviewCommentEntity) {
 		return shopMapper.addStyleReviewComment(styleReviewCommentEntity);
+	}
+	
+	@Override
+	public Boolean removeStyleReviewComment(ShopStyleReviewCommentDeleteEntity styleReviewCommentDeleteEntity) {
+		return shopMapper.removeStyleReviewComment(styleReviewCommentDeleteEntity);
 	}
 
 	@Override

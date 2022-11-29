@@ -10,6 +10,7 @@ import boot.sist.dto.ShopStyleReviewDto;
 import boot.sist.entity.ShopEntity;
 import boot.sist.entity.ShopLikeEntity;
 import boot.sist.entity.ShopListEntity;
+import boot.sist.entity.ShopStyleReviewCommentDeleteEntity;
 import boot.sist.entity.ShopStyleReviewCommentEntity;
 import boot.sist.entity.ShopStyleReviewEntity;
 import boot.sist.entity.ShopStyleReviewInsertEntity;
@@ -34,6 +35,7 @@ public interface ShopServiceInter {
 	public ShopStyleReviewDto getStyleReview(ShopStyleReviewEntity styleReviewEntity);
 	public List<ShopStyleReviewCommentDto> getStyleReviewComment(ShopStyleReviewEntity styleReviewEntity);
 	public Boolean addStyleReviewComment(ShopStyleReviewCommentEntity styleReviewCommentEntity);
+	public Boolean removeStyleReviewComment(ShopStyleReviewCommentDeleteEntity styleReviewCommentDeleteEntity);
 	public int getStyleReviewLike(ShopStyleReviewEntity styleReviewEntity);
 	public int getStyleReviewLikeCount(String styleReviewId);
 	public int setStyleReviewLike(ShopStyleReviewEntity styleReviewEntity);
