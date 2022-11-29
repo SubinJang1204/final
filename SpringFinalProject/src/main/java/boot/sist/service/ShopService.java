@@ -114,4 +114,22 @@ public class ShopService implements ShopServiceInter {
 	public int unsetStyleReviewLike(ShopStyleReviewEntity styleReviewEntity) {
 		return shopMapper.unsetStyleReviewLike(styleReviewEntity);
 	}
+
+	@Override
+	public void insertShop(ShopDto dto) {
+
+		shopMapper.insertShop(dto);
+	}
+
+	@Override
+	public void deleteShop(String num) {
+
+		shopMapper.deleteShop(num);
+	}
+
+	@Override
+	public ShopDto getProduct(String num) {
+
+		return shopMapper.getProduct(num);
+	}
 }

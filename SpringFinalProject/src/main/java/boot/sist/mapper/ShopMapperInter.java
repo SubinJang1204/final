@@ -41,4 +41,9 @@ public interface ShopMapperInter {
 	public int getStyleReviewLikeCount(String styleReviewId);
 	public int setStyleReviewLike(ShopStyleReviewEntity styleReviewEntity);
 	public int unsetStyleReviewLike(ShopStyleReviewEntity styleReviewEntity);
+	
+	
+	public void insertShop(ShopDto dto);
+	public void deleteShop(String num);
+	public ShopDto getProduct(String num);
 }

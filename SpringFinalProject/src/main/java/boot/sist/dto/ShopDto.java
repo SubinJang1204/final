@@ -14,6 +14,7 @@ public class ShopDto {
 	private String sangpum;
 	private String category;
 	private String sub_category;
+	private String photo;
 	private String detail_photo;
 	private int price;
 	private int sangpumsize;
