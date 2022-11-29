@@ -10,18 +10,20 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 @Data
-@Alias("resell")
-public class ResellDto {
+@Alias("chat")
+public class ChatDto {
+	
 	private int num;
-	private int m_num;
-	private String m_id;
-	private String state;
-	private String subject;
-	private int price;
-	private String content;
-	private String photo;
-	private int likes;
+	private int r_num;
+	private String r_subject;
+	
+	@NumberFormat(pattern = "###,###")
+	private int r_price;
+	private String r_photo;
+	private String seller;
+	private String buyer;
 	
 	@JsonFormat(pattern = "yyyy년 MM월 dd일")
 	private Timestamp writeday;
+
 }
