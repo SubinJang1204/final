@@ -24,11 +24,16 @@
 	<button class="liNav selected" onclick="location.href='list'">Re-sell Market</button>
 </ul>
 
-<input type="hidden" value="${myid }" id="thisId">
+<input type="hidden" value="${sessionScope.myid }" id="thisId">
+<input type="hidden" value="${sessionScope.loginok }" id="thisLogin">
 
 <div class="d-md-flex justify-content-md-end pe-5">
 	<button type="button" id="writeresell" class="btn btn-outline-dark btn-lg writeresell">판매하기</button>
-	<button type="button" class="ms-2 btn btn-outline-dark btn-lg writeresell" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">채팅방 열기</button>
+	<button type="button" class="ms-2 btn btn-outline-dark btn-lg position-relative writeresell" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">채팅방 열기
+		<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+			${alarm }+
+		</span>
+	</button>
 </div><br>
 
 <section style="width: 100%; max-width:1000px;  margin: auto;" class="container" >
@@ -80,7 +85,12 @@
 <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" 
 	tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width: 40%;">
   <div class="offcanvas-header">
-    <h5 id="offcanvasRightLabel">${sessionScope.myid }님의 Chatting List</h5>
+  	<c:if test="${loginok==null }">
+    	<h5 id="offcanvasRightLabel">Chatting List</h5>
+  	</c:if>
+  	<c:if test="${loginok!=null }">
+    	<h5 id="offcanvasRightLabel">${sessionScope.myid }님의 Chatting List</h5>
+  	</c:if>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">

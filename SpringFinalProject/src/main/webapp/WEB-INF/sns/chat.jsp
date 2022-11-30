@@ -101,6 +101,15 @@
 		</div>
 		
 		<div id="chating" class="chating">
+		
+		<c:forEach items="${d}" var="d">
+			<c:if test="${d.from_id == sessionScope.myid }">
+				<div class='me'><span>${d.content }</span></div>
+			</c:if>
+			<c:if test="${d.from_id != sessionScope.myid }">
+				${d.from_id}<div class='others'><span>${d.content }</span></div>
+			</c:if>
+		</c:forEach>
 		</div>
 		
 		<div id="yourName">
@@ -185,7 +194,16 @@ function send() {
 		userName : $("#userName").val(),
 		msg : $("#chatting").val()
 	}
-	ws.send(JSON.stringify(option))
+	ws.send(JSON.stringify(option));
+	
+	// db 저장하기
+	$.ajax({
+        url: "/insertMessage",
+        type: "POST",
+        data: option,
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8;"
+    });
+	
 	$('#chatting').val("");
 }
 </script>
