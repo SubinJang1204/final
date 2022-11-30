@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
@@ -24,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import boot.sist.dto.ChatDto;
 import boot.sist.dto.MemberDto;
+import boot.sist.dto.MessageDto;
 import boot.sist.dto.ResellDto;
 import boot.sist.mapper.ChatMapperInter;
 import boot.sist.service.MemberService;
@@ -49,7 +51,9 @@ public class ResellController {
 	@GetMapping("/resell/list")
 	public ModelAndView main(HttpSession session) {
 		ModelAndView model=new ModelAndView();
+		String myid=(String)session.getAttribute("myid");
 		
+		// 모든 생성된 채팅방, 룸 vo 생성
 		if(count==0) {
 			List<ChatDto>chatlist=chat_mapper.getEveryChatList();
 			
@@ -57,14 +61,26 @@ public class ResellController {
 					Room room = new Room();
 					room.setRoomNumber(c.getNum());
 					room.setRoomName(c.getR_subject());
-					roomList.add(room);	
+					roomList.add(room);
 			}
 			System.out.println(roomList);
 			count++;
 			model.addObject("roomList", roomList);
 		}
 		
-		model.addObject("myid", (String)session.getAttribute("myid"));
+		// 내 채팅방에서, 채팅 안읽은 메세지 카운팅
+		int alarm=0;
+
+		List<ChatDto> mylist= chat_mapper.getAllChat(myid);
+		for(ChatDto c:mylist) {
+			Map<String, Object>map=new HashMap<>();
+			map.put("num", c.getNum());
+			map.put("myid", myid);
+			alarm += chat_mapper.searchUnreadMesssage(map);
+		}
+		
+		model.addObject("alarm", alarm);
+		model.addObject("myid", myid);
 		model.setViewName("/sns/resell");
 		
 		return model;
@@ -163,7 +179,34 @@ public class ResellController {
 	@ResponseBody
 	public List<ChatDto> insertchat(@RequestParam String myid) {
 		List<ChatDto> list= chat_mapper.getAllChat(myid);
+		
+		// 채팅 안읽은 메세지 카운팅
+		for(ChatDto c:list) {
+			Map<String, Object>map=new HashMap<>();
+			map.put("num", c.getNum());
+			map.put("myid", myid);
+			c.setUnreadMessage(chat_mapper.searchUnreadMesssage(map));
+		}
+		
 		return list;
+	}
+	
+	// 채팅 있는 지 없는 지 검색
+	@GetMapping("/resell/searchchat")
+	@ResponseBody
+	public boolean searchchat(@RequestParam String myid, @RequestParam int num) {
+		Map<String, Object>map=new HashMap<>();
+		map.put("myid", myid);
+		map.put("num", num);
+		
+		boolean flag = false;
+		int roomNum=chat_mapper.searchChat(map);
+		
+		if(roomNum!=0) {
+			flag=true;
+		}
+		
+		return flag;
 	}
 	
 	@GetMapping("/resell/gochat")
@@ -175,7 +218,6 @@ public class ResellController {
 		return model;
 	}
 	
-	// 처음 시작할 때 채팅 방 새로 생성하기
 	
 	/**
 	 * 방 페이지
@@ -236,7 +278,7 @@ public class ResellController {
 	 * @return
 	 */
 	@RequestMapping("/moveChating")
-	public ModelAndView chating(@RequestParam HashMap<Object, Object> params) {
+	public ModelAndView chating(@RequestParam HashMap<Object, Object> params, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		int roomNumber = Integer.parseInt((String) params.get("roomNumber"));
 		
@@ -244,14 +286,40 @@ public class ResellController {
 		if(new_list != null && new_list.size() > 0) {
 			mv.addObject("roomName", params.get("roomName"));
 			mv.addObject("roomNumber", params.get("roomNumber"));
-			
+
+			// 채팅방 인식카드(리셀 게시글 정보)
 			ChatDto dto = chat_mapper.getOneChat(roomNumber);
 			mv.addObject("dto", dto);
+
+			// 채팅방 이전 메세지 불러오기
+			List<MessageDto> mlist = chat_mapper.getMessageList(roomNumber);
+			mv.addObject("d", mlist);
+			
+			// 채팅방 안 읽은 메세지 read 하기
+			int maxnum = chat_mapper.getMaxNuminmessage();
+			Map<String, Object>map=new HashMap<>();
+			map.put("num", params.get("roomNumber"));
+			map.put("myid", (String)session.getAttribute("myid"));
+			map.put("maxnum", maxnum);
+			chat_mapper.updateReadMessage(map);
+			
 			mv.setViewName("/sns/chat");
 		}else {
 			mv.setViewName("/sns/resell");
 		}
 		return mv;
 	}
+	
+	// 채팅 메세지 인서트
+	@PostMapping("/insertMessage")
+	@ResponseBody
+	public void insertMessage(@RequestParam HashMap<Object, Object> params) {
+		MessageDto dto = new MessageDto();
+		dto.setC_num(Integer.parseInt((String) params.get("roomNumber")));
+		dto.setFrom_id((String)params.get("userName"));
+		dto.setContent((String)params.get("msg"));
+		chat_mapper.insertMessage(dto);
+	}
+	
 
 }

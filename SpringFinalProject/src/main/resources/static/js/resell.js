@@ -77,6 +77,13 @@ $(window).scroll(function(e) {
  
 /** 새 판매글 입력 */ 
  $("#writeresell").click(function(){
+	var loginok=$("#thisLogin").val();
+	
+	if(loginok!='yes'){
+		alert("로그인이 필요한 서비스입니다.");
+		location.href="../login/main";
+	}
+	
 	$("#writeResellModal").modal('show');
 });
 
@@ -108,27 +115,46 @@ $("#writeResell").click(function(){
 });
 
 /** 채팅 만들기 */
-/** 채팅방 유효성 검사 해야함 */
+/** 채팅방 유효성 검사 */
 $(document).on("click","#chatbtn",function(){
 	var num = $(this).attr("num");
 	var seller = $(this).attr("seller");
 	var buyer = $("#thisId").val();
-		
+	
+	var loginok=$("#thisLogin").val();
+	if(loginok!='yes'){
+		alert("로그인이 필요한 서비스입니다.");
+		location.href="../login/main";
+		return
+	}
+	
 	$.ajax({
-		type:"post",
-		data:{"num":num,"buyer":buyer,"seller":seller},
+		type:"get",
+		data:{"num":num,"myid":buyer},
 		dataType:"JSON",
-		url:"insertchat",
+		url:"searchchat",
 		success:function(data){
-			chatList();
-			
-			var msg = { "roomName": data.roomName, "roomNumber": data.roomNumber };
-			console.log(msg);
-			commonAjax('/createRoom', msg, 'post', function(result) {
-			createChatingRoom(result);
-			goChat(data.roomNumber);
-			});
-			
+			if(data){
+				alert("이미 존재하는 채팅방입니다")
+			}else{
+				$.ajax({
+					type: "post",
+					data: { "num": num, "buyer": buyer, "seller": seller },
+					dataType: "JSON",
+					url: "insertchat",
+					success: function(data) {
+						chatList();
+
+						var msg = { "roomName": data.roomName, "roomNumber": data.roomNumber };
+						console.log(msg);
+						commonAjax('/createRoom', msg, 'post', function(result) {
+							createChatingRoom(result);
+							goRoom(data.roomNumber);
+						});
+
+					}
+				}); 
+			}
 		}
 	}); 
 });
@@ -137,6 +163,7 @@ chatList();
 /** 채팅방 불러오기 */
 function chatList(){
 	var myid=$("#thisId").val();
+	var loginok=$("#thisLogin").val();
 	
 	$.ajax({
 		type: "get",
@@ -145,24 +172,34 @@ function chatList(){
 		url: "getchat",
 		success: function(data){
 			var s = ""; 
-			$.each(data, function(idx, item){
-				let price = item.r_price;
-				let result = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-				
-				s+="<div class='d-flex rounded shadow-sm mb-3 chattingCard'>";
-				s+="	<div>";
-				s+="		<img src='../resellphoto/"+item.r_photo+"' class='rounded' style='max-width:130px'>"
-				s+="	</div>";
-				s+="	<div class='p-2 w-100'>";
-				s+="		<div class='d-flex'>"
-				s+="			<h5 class='flex-fill w-100'>"+item.r_subject+" ∙ " + result + "원</h5>";
-				s+="			<a id='chatdel' num='"+item.num+"' style='cursor:pointer;'><i class='bi bi-x-circle' style='font-size:1.3em;'></i></a>";
-				s+="		</div>";
-				s+="		<p>seller ID : "+item.seller+" ∙ buyer ID : "+item.buyer+"</p>";				
-				s+="		<button type='button' onclick='goRoom(\"" + item.num + "\", \"" + item.r_subject + "\")' num='"+item.num+"' class='btn btn-outline-dark btn-sm writeresell'>채팅 방 바로가기</button>";
-				s+="	</div>";
-				s+="</div>";
-			});
+			
+			if(loginok!='yes'){
+				s+="<h4 class='text-center shadow p-3'>로그인 후<br> 채팅방을 개설할 수 있습니다</h4>";
+			}else{
+				$.each(data, function(idx, item){
+					let price = item.r_price;
+					let result = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+					
+					s+="<div class='d-flex rounded shadow-sm mb-3 chattingCard'>";
+					s+="	<div style='width:150px; max-height:130px;'>";
+					s+="		<img src='../resellphoto/"+item.r_photo+"' class='rounded chattingCardimg'>"
+					s+="	</div>";
+					s+="	<div class='p-2 w-100'>";
+					s+="		<div class='d-flex'>"
+					s+="			<h5 class='flex-fill w-100'>"+item.r_subject+" ∙ " + result + "원</h5>";
+					s+="			<a id='chatdel' num='"+item.num+"' style='cursor:pointer;'><i class='bi bi-x-circle' style='font-size:1.3em;'></i></a>";
+					s+="		</div>";
+					s+="		<p>seller ID : "+item.seller+" ∙ buyer ID : "+item.buyer+"</p>";				
+					s+="		<button type='button' onclick='goRoom(\"" + item.num + "\", \"" + item.r_subject + "\")' num='"+item.num+"' class='btn btn-outline-dark btn-sm position-relative writeresell'>채팅 방 바로가기";
+					if(item.unreadMessage>0){
+						s+=" <span class='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger'>";
+						s+=item.unreadMessage+"+";
+						s+="</span>"			
+					}
+					s+="	</button></div>";
+					s+="</div>";
+				});
+			}
 		$(".chatList").html(s);
 		}
 	});	
@@ -207,13 +244,13 @@ window.onload = function() {
 
 /**처음 시작할 때 채팅방 리스트 만들기 */
 
-function makingroom(){
+/**function makingroom(){
 	commonAjax('/makingRoom', "", 'post', function(result) {
 		createChatingRoom(result);
 	});
 	
 	makingroom = function(){} // 함수 초기화 하기 , 한번만 실행 되도록
-}
+}*/
 
 function getRoom() {
 	commonAjax('/getRoom', "", 'post', function(result) {
