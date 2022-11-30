@@ -5,7 +5,6 @@
 	<div class="shop-info">
 		<div class="shop-image">
 			<picture>
-
 				<img src="${shop.getDetail_photo()}" />
 			</picture>
 		</div>
@@ -14,9 +13,6 @@
 				<input type="hidden" id="shopId" value="${shop.getShopnum()}" />
 				<p class="shop-title">${shop.getSangpum()}</p>
 				<p class="shop-category">${shop.getCategory()} &gt; ${shop.getSub_category()}</p>
-				<div class="shop-price">
-					<p>사이즈</p>
-				</div>
 				<div class="shop-price">
 					<p>판매가</p>
 					<p><strong>${shop.getPriceWithCommas()}</strong>원</p>
@@ -52,7 +48,7 @@
 					<div class="shop-delivery-list">
 						<div class="shop-delivery">
 							<picture>
-								<img src="../image/dlfqks.png" />
+								<img src="" />
 							</picture>
 							<div class="shop-delivery-text">
 								<p><strong>일반배송</strong> 3,000원</p>
@@ -61,7 +57,7 @@
 						</div>
 						<div class="shop-delivery">
 							<picture>
-								<img src="../image/qothd.png" />
+								<img src="" />
 							</picture>
 							<div class="shop-delivery-text">
 								<p><strong>빠른배송</strong> 5,000원</p>
@@ -107,7 +103,7 @@
 
 <b>검수 결과는 불합격•검수 보류•합격의 세가지 상태로 결과가 변경됩니다.</b>
 
-* 검수 합격: {3조프로젝트명} 검수택(Tag)이 부착되어 배송을 준비함
+* 검수 합격: {프로젝트명} 검수택(Tag)이 부착되어 배송을 준비함
 * 검수 보류: 앱에서 사진으로 상품의 상태 확인 및 구매 여부를 선택. (24시간 이후 자동 검수 합격)
 * 검수 불합격: 즉시 거래가 취소되고 구매하신 금액을 환불 처리함.(환불 수단은 결제 수단과 동일)</div>
 					</div>
@@ -117,28 +113,28 @@
 							<i class="bi bi-caret-down"></i>
 							<i class="bi bi-caret-up"></i>
 						</button>
-						<div class="shop-notice-detail"><b>{3조 프로젝트}은 익명 거래를 기반으로 판매자가 판매하는 상품을 구매자가 실시간으로 구매하여 거래를 체결합니다.</b>
+						<div class="shop-notice-detail"><b>{프로젝트명}은 익명 거래를 기반으로 판매자가 판매하는 상품을 구매자가 실시간으로 구매하여 거래를 체결합니다.</b>
 
-- 단순 변심이나 실수에 의한 취소/교환/반품이 불가능합니다. 상품을 원하지 않으시는 경우 언제든지 {3조 프로젝트}에서 재판매를 하실 수 있습니다.
+- 단순 변심이나 실수에 의한 취소/교환/반품이 불가능합니다. 상품을 원하지 않으시는 경우 언제든지 {프로젝트명}에서 재판매를 하실 수 있습니다.
 - 상품 수령 후, 이상이 있는 경우 {프로젝트명} 고객센터로 문의해주시기 바랍니다.</div>
 					</div>
 					<div class="shop-notice-info">
 						<div class="shop-notice-item">
-							<img src="../image/3x.png" />
+							<img src="" />
 							<div class="shop-notice-text">
 								<p><strong>100% 정품 보증</strong></p>
 								<p>검수한 상품이 정품이 아닐 경우, 구매가의 3배를 보상합니다.</p>
 							</div>
 						</div>
 						<div class="shop-notice-item">
-							<img src="../image/cpzm.png" />
+							<img src="" />
 							<div class="shop-notice-text">
 								<p><strong>엄격한 다중 검수</strong></p>
 								<p>모든 상품은 검수센터에 도착한 후, 상품별 전문가 그룹의 체계적인 시스템을 거쳐 검수를 진행합니다.</p>
 							</div>
 						</div>
 						<div class="shop-notice-item">
-							<img src="../image/zmfla.png" />
+							<img src="" />
 							<div class="shop-notice-text">
 								<p><strong>정품 인증 패키지</strong></p>
 								<p>검수에 합격한 경우에 한하여 정품 인증 패키지가 포함된 상품이 배송됩니다.</p>
@@ -271,13 +267,14 @@
 			</div>
 		</div>
 		<script type="text/template" id="commentBlock">
-			<div class="review-comment-block">
+			<div class="review-comment-block" data-comment-id="{num}">
 				<div class="review-profile">
 					<img src="{m_photo}" />
 					<p>
 						<span><strong>{user_id}</strong> {ans_content}</span>
 						<span>{releases}</span>
 					</p>
+					<button class="btn-delete" type="button">삭제</button>
 				</div>
 			</div>
 		</script>

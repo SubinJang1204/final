@@ -41,54 +41,43 @@ cursor:pointer;
 </head>
 <c:set var="root" value="<%=request.getContextPath()%>" />
 <body>
-<table class="table">
-<tr>
-<td>
-<span style="font-size:30px">${dto.subject }</span><br>
-<span style="font-size:14px">${dto.writeday }</span><span style="font-size:14px;float:right">조회 ${dto.readcount }</span>
-</td>
-</tr>
-<tr>
-<td>
- <c:if test="${dto.photo!='no' }">
-            <c:forTokens items="${dto.photo }" var="photo" delims=",">
-            <img alt="" src="../photo/${photo }" width="100" class="img-thumnail">
-            </c:forTokens>
-         </c:if>
-        
-         <br>
-         <span style="font-size:16px;">${dto.content }</span>
-         
-</td>
-</tr>
-<tr>
-<td>
-<br>
-<div class="likes" style="font-size:15px">
-<i class="bi bi-heart"></i>&nbsp;&nbsp;좋아요&nbsp;&nbsp;<b>${dto.likes }</b>
-</div>
-<i class="bi bi-chat" style="font-size:15px"></i>&nbsp;&nbsp;&nbsp;<span style="font-size:15px">댓글</span>&nbsp;&nbsp;<b class="banswer" style="font-size:15px">0</b>
-<br><br>
-</td>
+<table class="table table-lg"
+		style="margin-left: 340px; margin-top: 50px; width: 1200px;">
+		<tr>
 
-</tr>
+			<td style="font-size: 1.8em;">&nbsp;&nbsp;&nbsp;&nbsp;${dto.subject }</td>
+			<td>
+				<div class="likes" style="margin-left: 430px; margin-right: -140px;">
+					<i class="bi bi-heart"></i>&nbsp;&nbsp;좋아요&nbsp;&nbsp;<b>${dto.likes }</b>
+				</div>
+			</td>
 
-<tr>
-<td>
-<div style="font-size:14px;">
+			<td style="font-size: 1.1em;"><i class="bi bi-eye"></i>&nbsp;&nbsp;조회수&nbsp;&nbsp;<b>${dto.readcount }</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<fmt:formatDate
+					value="${dto.writeday }" pattern="yyyy-MM-dd HH:mm" /></td>
 
-</div>
-</td>
-</tr>
-<tr>
-<td>
+		</tr>
 
-<button class="btn btn-light btn-lg" style="width:100px" onclick="location.href='list?currentPage=${currentPage}'">목록</button>
+		<tr>
+			<td colspan="6"><br>
+			<br>
+			
+			
+			<img src="../photo/${dto.photo }"><br>
+			 ${dto.content } <br>
+			
+			<br></td>
+		</tr>
+		
+	<tr>
+	<td align="center" colspan="3">
+
+
+<button class="btn btn-dark btn-sm" style="width:100px" onclick="location.href='list?currentPage=${currentPage}'">목록</button>
 <c:if test="${myid=='admin' }">
-<button class="btn btn-light btn-lg" style="width:100px" onclick="location.href='form'">새글</button>&nbsp;&nbsp;
-<button class="btn btn-light btn-lg" style="width:100px" onclick="location.href='form?num=${dto.num}&regroup=${dto.regroup }&restep=${dto.restep }&relevel=${dto.relevel }&currentPage=${currentPage }'">답글</button>&nbsp;&nbsp;
-<button class="btn btn-light btn-lg" style="width:100px" onclick="location.href='updateform?num=${dto.num}&currentPage=${currentPage }'">수정</button>
-<button class="btn btn-light btn-lg" style="width:100px" onclick="location.href='delete?num=${dto.num}&currentPage=${currentPage }'">삭제</button>
+<button class="btn btn-dark btn-sm" style="width:100px" onclick="location.href='form'">새글</button>&nbsp;&nbsp;
+<button class="btn btn-dark btn-sm" style="width:100px" onclick="location.href='form?num=${dto.num}&regroup=${dto.regroup }&restep=${dto.restep }&relevel=${dto.relevel }&currentPage=${currentPage }'">답글</button>&nbsp;&nbsp;
+<button class="btn btn-dark btn-sm" style="width:100px" onclick="location.href='updateform?num=${dto.num}&currentPage=${currentPage }'">수정</button>
+<button class="btn btn-dark btn-sm" style="width:100px" onclick="location.href='delete?num=${dto.num}&currentPage=${currentPage }'">삭제</button>
 </c:if>
 
 </td>

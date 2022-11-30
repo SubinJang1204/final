@@ -25,6 +25,8 @@
 	<button class="liNav" onclick="location.href='../resell/list'">Re-sell Market</button>
 </ul>
 
+<input type="hidden" value="${sessionScope.loginok }" id="thisLogin">
+
 <div class="d-md-flex justify-content-md-end pe-5">
 	<button type="button" id="writebtn" class="btn btn-outline-dark btn-lg writebtn">새 글 작성</button>
 </div>

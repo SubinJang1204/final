@@ -28,7 +28,13 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
 	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
 	crossorigin="anonymous"></script>
-
+<script type="text/javascript">
+$(function(){
+   $(".se").click(function(){
+      $(".bt").trigger("click");
+   });
+});
+</script>
 <style type="text/css">
 * {
 	font-family: 'Gowun Dodum', sans-serif;
@@ -91,7 +97,21 @@
 </style>
 </head>
 <body>
-
+<div class="searcharea" style="width:100%;text-align:center;position:relative;top:100px;left:-65px;">
+<!-- 검색창 -->
+<form action="list" class="form-inline">
+<div style="width:450px;display:inline-block;margin-right:170px;float:right;margin-bottom:30px;">
+<select class="form-select" style="width:80px;display:inline-block" name="searchcolumn">
+<option value="subject">제목</option>
+<option value="content">내용</option>
+</select>
+<input type="text" name="searchword" class="form-control"
+style="width:150px;display:inline-block" placeholder="검색 단어">
+<button type="submit" class="btn btn-dark bt" onchange="readURL(this)" style="visibility: hidden">검색</button>
+<i class="bi bi-search se" style="cursor:pointer;font-size:1.3em;position:relative;left:-50px;"></i>
+</div>
+</form>
+</div>
 	<c:if test="${totalCount==0 }">
 		<h2>리스트가 없습니다</h2>
 	</c:if>
@@ -125,10 +145,9 @@
 							style="cursor: pointer">
 					</c:if>
 					<div class="title">
-						<span style="color: #2e2e2e; font-size: 0.9em;"> <javatime:format
-								value="${dto.writeday }" pattern="yyyy-MM-dd" />
-						</span> <br> <a
-							href="content?num=${dto.num }&currentPage=${currentPage}">
+						<span style="color: #2e2e2e; font-size: 0.9em;"> 
+						<fmt:formatDate value="${dto.writeday }" pattern="yyyy-MM-dd" />
+						</span> <br> <a href="content?num=${dto.num }&currentPage=${currentPage}">
 							${dto.subject } </a>
 
 

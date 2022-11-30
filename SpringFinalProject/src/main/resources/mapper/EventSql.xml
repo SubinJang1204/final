@@ -2,14 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="boot.sist.mapper.EventMapperInter">
-    <select id="getTotalCount" resultType="int">
+    <select id="getTotalCount" parameterType="Map" resultType="int">
     	select count(*) from eventboard
+    	 <if test="searchcolumn!=null and searchword!=null">
+		   where ${searchcolumn} like concat('%',#{searchword},'%')
+		   </if>
     </select>
     <insert id="insertEvent" parameterType="event">
        insert into eventboard (name,myid,subject,content,mainphoto,writeday) values (#{name},#{myid},#{subject},#{content},#{mainphoto},now())
     </insert>
-    <select id="getEventList" resultType="Map">
-       select * from eventboard order by num desc limit #{start},#{perpage}
+    <select id="getEventList" parameterType="Map" resultType="event">
+       select * from eventboard 
+       <if test="searchcolumn!=null and searchword!=null">
+	   where ${searchcolumn} like concat('%',#{searchword},'%')
+	   </if>
+       order by num desc limit #{start},#{perpage}
     </select>
     <select id="getEvent" parameterType="int" resultType="event">
     select*from eventboard where num=#{num}

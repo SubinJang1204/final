@@ -177,7 +177,7 @@
 	</select>
 	
 	<select id="getStyleReviewComment" parameterType="StyleReviewEntity" resultType="StyleReviewCommentDto">
-	SELECT sa.user_id, m_photo, ans_content, DATE_FORMAT(an_writeday, '%Y-%m-%d') releases
+	SELECT sa.num, sa.user_id, m_photo, ans_content, DATE_FORMAT(an_writeday, '%Y-%m-%d') releases
 		FROM styleBoard sb
 		LEFT JOIN styleAnswer sa ON sb.num = sa.que_num
 		WHERE
@@ -195,6 +195,14 @@
 			#{que_num}
 		)
 	</insert>
+	
+	<delete id="removeStyleReviewComment" parameterType="StyleReviewCommentDeleteEntity">
+	DELETE
+		FROM styleAnswer
+		WHERE
+			num = #{num}
+			AND user_id = #{user_id}
+	</delete>
 	
 	<select id="getStyleReviewLike" parameterType="StyleReviewEntity" resultType="int">
 	SELECT COUNT(styleNum)

@@ -269,15 +269,17 @@ textarea::placeholder {
 									<br> <span class="loginname">${loginname}님 환영합니다</span>
 								</div>
 						</span> <span class="search">
-								<form name="search" method="post" action="search"
+								<form name="search" action="${root}/mainsc/list"
 									target="_parent" id="search_right">
 									<div class="search-box">
-										<input type="text" class="search-txt" name="search"
+									
+										<input type="text" class="search-txt" name="searchword"
 											placeholder="search..." onkeydown="onEnterSubmit()">
 										<a class="search-btn" onClick="document.search.submit();"><i
-											class="bi bi-search"></i></a>
+											class="bi bi-search" onchange="readURL(this)"></i></a>
 									</div>
 								</form>
+							
 						</span>
 							<div class="Q_link">
 								<span onclick="location.href='${root}/sns/list'" style="display: block"><i

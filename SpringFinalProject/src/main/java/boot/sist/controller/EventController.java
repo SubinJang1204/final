@@ -34,11 +34,13 @@ public class EventController {
 	MemberService mservice;
 	
 	@GetMapping("/event/list")
-	public ModelAndView list(@RequestParam(defaultValue="1") int currentPage) {
+	public ModelAndView list(@RequestParam(defaultValue = "1")int currentPage,
+			@RequestParam(value="searchcolumn",required = false) String sc,
+			@RequestParam(value="searchword",required = false) String sw) {
 		
-		ModelAndView mview=new ModelAndView();
-		
-		int totalCount=service.getTotalCount();
+				ModelAndView mview=new ModelAndView();
+				
+				int totalCount=service.getTotalCount(sc, sw);
 			
 				int totalPage;
 				int startPage; 
@@ -47,7 +49,7 @@ public class EventController {
 				int perPage = 4; 
 				int perBlock = 5; 
 				
-				totalCount = service.getTotalCount();
+				totalCount = service.getTotalCount(sc, sw);
 
 				totalPage = totalCount / perPage + (totalCount % perPage == 0 ? 0 : 1);
 
@@ -59,7 +61,7 @@ public class EventController {
 
 				start = (currentPage - 1) * perPage;
 
-				List<EventDto> list = service.getEventList(start, perPage);
+				List<EventDto> list = service.getEventList(sc, sw, start, perPage);
 				
 				int no = totalCount - (currentPage - 1) * perPage;
 				

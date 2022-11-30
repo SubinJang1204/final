@@ -23,18 +23,23 @@ public class EventService implements EventServiceInter {
 	}
 
 	@Override
-	public List<EventDto> getEventList(int start, int perpage) {
+	public List<EventDto> getEventList(String searchcolumn, String searchword, int start, int perpage) {
 		// TODO Auto-generated method stub
-		Map<String, Integer> map=new HashMap<>();
+		Map<String, Object> map=new HashMap<>();
+		map.put("searchcolumn", searchcolumn);
+		map.put("searchword", searchword);
 		map.put("start", start);
 		map.put("perpage", perpage);
 		return mapperInter.getEventList(map);
 	}
 
 	@Override
-	public int getTotalCount() {
-		// TODO Auto-generated method stub
-		return mapperInter.getTotalCount();
+	public int getTotalCount(String searchcolumn, String searchword) {
+        Map<String, String> map=new HashMap<>();
+		
+		map.put("searchcolumn", searchcolumn);
+		map.put("searchword", searchword);
+		return mapperInter.getTotalCount(map);
 	}
 
 	@Override

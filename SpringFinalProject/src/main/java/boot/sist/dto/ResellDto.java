@@ -3,6 +3,7 @@ package boot.sist.dto;
 import java.sql.Timestamp;
 
 import org.apache.ibatis.type.Alias;
+import org.springframework.format.annotation.NumberFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

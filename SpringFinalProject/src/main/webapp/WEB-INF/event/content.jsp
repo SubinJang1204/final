@@ -101,9 +101,7 @@ div.likes {
 						type : "get",
 						url : "likes",
 						dataType : "json",
-						data : {
-							"num" : num
-						},
+						data : {"num" : num},
 						success : function(res) {
 							$("div.likes").find("b").text(res.likes);
 						}

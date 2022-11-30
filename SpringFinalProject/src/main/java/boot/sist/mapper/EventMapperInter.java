@@ -11,8 +11,8 @@ import boot.sist.dto.EventDto;
 public interface EventMapperInter {
 
 	public void insertEvent(EventDto dto);
-	public List<EventDto> getEventList(Map<String, Integer> map);
-	public int getTotalCount();
+	public List<EventDto> getEventList(Map<String, Object> map);
+	public int getTotalCount(Map<String, String> map);
 	public EventDto getEvent(int num);
 	public int getMaxNum();
 	public void updateReadCount(int num);

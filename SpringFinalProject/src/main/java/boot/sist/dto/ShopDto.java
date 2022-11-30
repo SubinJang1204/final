@@ -13,6 +13,7 @@ public class ShopDto {
 	private int shopnum;
 	private String sangpum;
 	private String category;
+	private String photo;
 	private String sub_category;
 	private String detail_photo;
 	private int price;

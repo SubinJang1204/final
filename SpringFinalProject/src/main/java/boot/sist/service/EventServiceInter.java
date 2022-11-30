@@ -7,8 +7,8 @@ import boot.sist.dto.EventDto;
 public interface EventServiceInter {
 
 	public void insertEvent(EventDto dto);
-	public List<EventDto> getEventList(int start, int perpage);
-	public int getTotalCount();
+	public List<EventDto> getEventList(String searchcolumn,String searchword,int start,int perpage);
+	public int getTotalCount(String searchcolumn,String searchword);
 	public EventDto getEvent(int num);
 	public int getMaxNum();
 	public void updateReadCount(int num);

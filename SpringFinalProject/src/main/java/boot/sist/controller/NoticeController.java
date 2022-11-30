@@ -40,10 +40,9 @@ public class NoticeController {
 			@RequestParam(value="searchcolumn",required = false) String sc,
 			@RequestParam(value="searchword",required = false) String sw) {
 		
-		ModelAndView mview=new ModelAndView();
+		    ModelAndView mview=new ModelAndView();
 		
-		//총 글의 개수
-				
+		
 				//페이징에 필요한 변수, 이렇게 6개가 넘어가야함!
 		        int totalCount=service.getTotalCount(sc, sw);
 				int totalPage; //총 페이지 수
