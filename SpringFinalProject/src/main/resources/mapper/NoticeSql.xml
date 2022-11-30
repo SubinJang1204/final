@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="boot.sist.mapper.NoticeMapperInter">
+   <select id="getTotalCount" parameterType="Map" resultType="int">
+   select count(*) from notice
+   <if test="searchcolumn!=null and searchword!=null">
+   where ${searchcolumn} like concat('%',#{searchword},'%')
+   </if>
+   </select>
+   <select id="getMaxNum" resultType="int">
+   select ifnull(max(num),0) from notice
+   </select>
+   <update id="updateRestep" parameterType="Map">
+   update notice set restep=restep+1 where regroup=#{regroup} and restep>#{restep}
+   </update>
+   <insert id="insertNotice" parameterType="notice">
+   insert into notice values(null,#{id},#{subject},#{photo},#{content},0,0,#{regroup},#{restep},#{relevel},now())
+   </insert>
+   <update id="updateNotice" parameterType="notice">
+   update notice set subject=#{subject}
+   <if test="photo!='no'">
+    ,photo=#{photo}
+    </if>
+    ,content=#{content} where num=#{num}
+   </update>
+   <delete id="deleteNotice" parameterType="int">
+    delete from notice where num=#{num}
+    </delete>
+   <select id="getList" parameterType="Map" resultType="notice">
+   select * from notice
+   <if test="searchcolumn!=null and searchword!=null">
+   where ${searchcolumn} like concat('%',#{searchword},'%')
+   </if>
+   order by regroup desc, restep asc limit #{start},#{perpage}
+   </select>
+   <update id="updateReadcount" parameterType="int">
+   update notice set readcount=readcount+1 where num=#{num}
+   </update>
+   <select id="getData" parameterType="int" resultType="notice">
+   select * from notice where num=#{num}
+   </select>
+   <update id="likesUpdate" parameterType="int">
+    update notice set likes=likes+1 where num=#{num}
+   </update>
+  </mapper>

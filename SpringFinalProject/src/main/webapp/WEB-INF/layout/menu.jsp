@@ -172,7 +172,7 @@ textarea::placeholder {
 .Q_link {
 	position: relative;
 	display: block;
-	top: -200px;
+	top: -230px;
 	left: 1450px;
 }
 
@@ -283,7 +283,10 @@ textarea::placeholder {
 								<span onclick="location.href='${root}/sns/list'" style="display: block"><i
 									class="bi bi-chat"></i>&nbsp;SNS</span> <span
 									onclick="location.href='${root}/event/list'" style="display: block"><i
-									class="bi bi-gift"></i>&nbsp;EVENT</span> <span
+									class="bi bi-gift"></i>&nbsp;EVENT</span>
+									<span
+									onclick="location.href='${root}/notice/list'" style="display: block"><i class="bi bi-calendar4-event"></i>&nbsp;NOTICE</span>
+									 <span
 									onclick="location.href='${root}/qna/list'" style="display: block"><i
 									class="bi bi-question-circle"></i>&nbsp;Q&A</span> <span
 									onclick="location.href='${root}/login/logoutprocess'"
