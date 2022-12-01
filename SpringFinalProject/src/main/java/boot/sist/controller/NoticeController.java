@@ -162,7 +162,7 @@ public class NoticeController {
 		//목록이 아닌 content로 이동하려면 maxnum을 알아야 한다
 		int num=service.getMaxNum();
 			
-		return "redirect:detail?num="+num+"currentPage="+currentPage;
+		return "redirect:detail?num="+num+"&currentPage="+currentPage;
 	}
 	
 	

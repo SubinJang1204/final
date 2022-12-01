@@ -89,11 +89,7 @@ div.likes {
 						$(this).find("i").attr("class", "bi bi-heart").css(
 								"color", "black");
 					}
-					var num = $
-					{
-						dto.num
-					}
-					;
+					var num = ${dto.num};
 					console.log(num);
 
 					$.ajax({
