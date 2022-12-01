@@ -41,6 +41,7 @@ font-family: 'Gowun Dodum', sans-serif;
 			}
 		});
 	});
+	
 </script>
 
 </head>
@@ -227,7 +228,6 @@ font-family: 'Gowun Dodum', sans-serif;
 				</td>
 			</tr>
 		</thead>
-			
 	</table>
 </body>
 </html>
