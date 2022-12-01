@@ -28,4 +28,33 @@
 	<delete id="deleteMember">
 		DELETE FROM member WHERE num=#{num}
 	</delete>
+	
+	  <!-- 주문자 정보 불러오기 -->
+   <select id="getMemberInfo" resultType="member">
+   	select id, name, email, addr from member where num=#{num}
+   </select>
+   
+   <!-- 주문자 리스트 -->
+   	<select id="getList" parameterType="HashMap" resultType="orderdto" >
+		select o_num, name, addr1, addr2, state, orderdate from cartorder 
+	   	<if test="searchcolumn !=null and searchword != null"> <!-- 컬럼이 있을 때는 $, 찾을게 있을 때는 # -->
+	   		where ${searchcolumn} like concat('%',#{searchword},'%')
+	   	</if>
+	   	limit #{start},#{perpage}
+	</select>
+	
+	<!-- 주문자 수 -->
+	<select id="getTotalCount" resultType="int">
+   		select count(*) from cartorder
+   	</select>
+   	
+   	<!-- 주문자 리스트 삭제2 -->
+   	<delete id="deletejumunlist2" parameterType="String">
+     	delete from orderItem where o_num=#{o_num}
+     </delete> 
+   	
+   	<!-- 주문자 리스트 삭제1 -->
+   	<delete id="deletejumunlist" parameterType="String">
+     	delete from cartorder where o_num=#{o_num}
+     </delete> 
   </mapper>

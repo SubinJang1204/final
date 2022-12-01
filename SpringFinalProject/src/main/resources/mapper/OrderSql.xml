@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="boot.sist.mapper.OrderMapperInter">
+  <!-- 주문 상품 정보 -->
+	<select id="getGoodsInfo" resultType="orderpageitem">
+		select shopnum as p_num, sangpum, price
+		from shop where shopnum = #{shopnum}	
+	</select>
+	
+	<select id="getOrderInfo" resultType="orderitemdto">
+		select shopnum as p_num, price
+		from shop where shopnum = #{shopnum}
+	</select>
+
+
+
+	<!-- 주문 테이블 등록 -->
+	<insert id="enrollOrder">	
+		insert into cartorder(o_num, name, m_num, addr1, addr2, state, delivery, orderdate)
+    	values(#{o_num},#{name}, #{m_num}, #{addr1}, #{addr2}, '배송준비', #{delivery}, now())
+	</insert>
+	
+	<!-- 주문 아이템 테이블 등록 -->
+	<insert id="enrollOrderItem">
+		insert into orderItem(oi_num, o_num, p_num, cnt, price)
+		values(null, #{o_num}, #{p_num}, #{cnt}, #{price})
+	</insert>
+	
+  </mapper>

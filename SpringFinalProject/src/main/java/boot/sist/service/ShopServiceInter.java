@@ -17,6 +17,7 @@ import boot.sist.entity.ShopStyleReviewInsertEntity;
 import boot.sist.entity.ShopStyleReviewListEntity;
 
 public interface ShopServiceInter {
+	public ShopDto getShoporder(String shopnum);
 	public List<ShopListDto> getShopList(ShopListEntity shopListEntity);
 	public int getShopListCount(ShopListEntity shopListEntity);
 	public List<ShopListSearchDto> getShopListSearch(String searchWord);

@@ -254,7 +254,7 @@ textarea::placeholder {
                         style="font-size: 18pt;"></i></a></li>&nbsp;&nbsp;&nbsp;
 
                   
-                  <li><a href="cart?myid=${myid }"><i class="bi bi-bag"
+                  <li><a href="${root }/cart/cart?myid=${myid }"><i class="bi bi-bag"
                         id="hov" style="font-size: 16pt;"></i>
                         <div
                            style="color: white; background-color: #000; width: 17px; top: -24px; height: 17px; border-radius: 100%; position: relative; left: 15px; font-size: 13px; line-height: 17px;">&nbsp;0</div></a></li>&nbsp;&nbsp;&nbsp;

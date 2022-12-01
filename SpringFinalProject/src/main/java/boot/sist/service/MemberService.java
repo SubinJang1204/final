@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import boot.sist.dto.MemberDto;
+import boot.sist.dto.OrderDto;
 import boot.sist.mapper.MemberMapperInter;
 
 @Service
@@ -70,6 +71,44 @@ public class MemberService implements MemberServiceInter {
 
 		mapperInter.deleteMember(num);
 	}
+	
+	@Override
+	public MemberDto getMemberInfo(int num) {
+		// TODO Auto-generated method stub
+		return mapperInter.getMemberInfo(num);
+	}
+
+	@Override
+	public List<OrderDto> getList(String searchcolumn, String searchword, int start, int perpage) {
+		// TODO Auto-generated method stub
+
+		HashMap<String, Object> map =new HashMap<>();
+		map.put("searchcolumn", searchcolumn);
+		map.put("searchword", searchword);
+		map.put("start", start);
+		map.put("perpage", perpage);
+		
+		return mapperInter.getList(map);
+	}
+
+	@Override
+	public int getTotalCount() {
+		// TODO Auto-generated method stub
+		return mapperInter.getTotalCount();
+	}
+
+	@Override
+	public void deletejumunlist(String o_num) {
+		// TODO Auto-generated method stub
+		mapperInter.deletejumunlist(o_num);
+	}
+
+	@Override
+	public void deletejumunlist2(String o_num) {
+		// TODO Auto-generated method stub
+		mapperInter.deletejumunlist2(o_num);
+	}
+
 
 	
 }

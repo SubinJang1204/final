@@ -35,6 +35,7 @@ font-family: 'Gowun Dodum', sans-serif;
 		<button type="button" class="btn btn-outline-secondary" onclick="location.href='memberList'">회원 관리</button>
 		<button type="button" class="btn btn-outline-secondary" onclick="location.href='shopform'">상품 등록</button>
 		<button type="button" class="btn btn-outline-secondary" onclick="location.href='event'">이벤트 관리</button>
+		<button type="button" class="btn btn-outline-secondary" onclick="location.href='jumun'">주문 관리</button>
 	</div>
 </body>
 </html>

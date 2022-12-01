@@ -2,6 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boot.sist.mapper.ShopMapperInter">
+	<select id="getShoporder" parameterType="string" resultType="shop">
+	SELECT * FROM shop WHERE shopnum=#{shopnum}
+	</select>
+
 	<select id="getShopList" parameterType="ShopListEntity" resultType="ShopListDto">
 	SELECT shop.shopnum shopnum, sangpum, category, sub_category, photo, price, COUNT(DISTINCT si.memberNum) bookmarks, COUNT(DISTINCT sb.num) reviews
 		FROM shop
