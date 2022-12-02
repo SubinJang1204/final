@@ -235,7 +235,7 @@
 	</delete>
 	
 	<insert id="insertShop" parameterType="Shop">
-		INSERT INTO shop VALUES (null, #{sangpum}, #{category}, #{sub_category}, #{photo}, #{detail_photo}, #{price}, #{sangpumsize}, #{model}, #{color}, 0, #{temp}, NOW())
+		INSERT INTO shop VALUES (null, #{sangpum}, #{category}, #{sub_category}, #{photo}, #{price}, #{sangpumsize}, #{model}, #{color}, 0, #{temp}, NOW(), #{detail_photo})
 	</insert>
 	
 	<delete id="deleteShop" parameterType="String">
