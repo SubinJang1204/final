@@ -211,7 +211,7 @@ public class ShopController {
 					.body(map);
 		}
 		
-		String uploadedImageName = fileUploadService.upload(image);
+		String uploadedImageName = fileUploadService.upload(image, session.getServletContext().getRealPath("/upload/"));
 		if ("".equals(uploadedImageName) || uploadedImageName == null) {
 			map.put("message", "사진 업로드 중 문제가 발생했습니다.");
 			return ResponseEntity
