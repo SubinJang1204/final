@@ -13,4 +13,5 @@ public interface QNAboardServiceInter {
 	public QNAboardDto getData(String num);
 	public void deleteQNA(String num);
 	public void insertAnswer(QNAboardDto dto);
+	public void updateAnswer(QNAboardDto dto);
 }

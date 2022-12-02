@@ -229,4 +229,16 @@
 			memberNum = #{memberId}
 			AND styleNum = #{styleReviewId}
 	</delete>
+	
+	<insert id="insertShop" parameterType="Shop">
+		INSERT INTO shop VALUES (null, #{sangpum}, #{category}, #{sub_category}, #{photo}, #{detail_photo}, #{price}, #{sangpumsize}, #{model}, #{color}, 0, #{temp}, NOW())
+	</insert>
+	
+	<delete id="deleteShop" parameterType="String">
+		DELETE FROM shop WHERE shopnum=#{num}
+	</delete>
+	
+	<select id="getProduct" parameterType="String" resultType="Shop">
+		SELECT * FROM shop WHERE shopnum=#{num}
+	</select>
 </mapper>

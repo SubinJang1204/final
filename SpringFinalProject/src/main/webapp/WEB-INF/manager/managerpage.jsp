@@ -33,7 +33,7 @@ font-family: 'Gowun Dodum', sans-serif;
 
 	<div class="d-grid gap-2 d-md-block" style="margin-top: 200px; margin-left: 400px;">
 		<button type="button" class="btn btn-outline-secondary" onclick="location.href='memberList'">회원 관리</button>
-		<button type="button" class="btn btn-outline-secondary" onclick="location.href=''">상품 관리</button>
+		<button type="button" class="btn btn-outline-secondary" onclick="location.href='shopform'">상품 등록</button>
 		<button type="button" class="btn btn-outline-secondary" onclick="location.href='event'">이벤트 관리</button>
 	</div>
 </body>
