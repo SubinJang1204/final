@@ -43,6 +43,13 @@
 						<span>${shop.getPriceWithCommas()}원</span>
 					</p>
 				</div>
+				
+				<!-- 주문 form -->
+			<form action="/order/${sessionScope.myid}" method="get" class="order_form">
+				<input type="hidden" name="orders[0].p_num" value="${shop.getShopnum()}">
+				<input type="hidden" name="orders[0].cnt" value="">
+			</form>	
+				
 				<div class="shop-delivery-info">
 					<p class="shop-sublabeltext">배송 정보</p>
 					<div class="shop-delivery-list">
@@ -278,7 +285,6 @@
 				</div>
 			</div>
 		</script>
-
 		<div class="style-review-form">
 			<div class="insert-form">
 				<strong>스타일 후기 등록</strong>
@@ -307,3 +313,41 @@
 	</div>
 </div>
 <script src="/js/shop.detail.js"></script>
+<script type="text/javascript">
+//즉시 구매
+$(".btn-buy").on("click", function(){
+	alert("즉시 구매합니다.");
+	let cnt = 5;
+	$(".order_form").find("input[name='orders[0].cnt']").val(cnt);
+	$(".order_form").submit();
+});
+//장바구니 추가 버튼 0
+$(".btn-cart").on("click", function(e){
+	//form.bookCount = $(".quantity_input").val();
+	$.ajax({
+		url: '/cart/add',
+		type: 'post',	
+		dataType: 'json',
+		data: {	m_num : "${m_num}",
+			p_num : "${shop.shopnum}",
+			cnt : "5",
+			sangpumsize : "105",
+			color : 'blue'}
+	,
+		success: function(result){
+			cartAlert(result);
+		}
+	});
+});
+function cartAlert(result){
+	if(result == '0'){
+		alert("장바구니에 추가를 하지 못하였습니다.");
+	} else if(result == '1'){
+		alert("장바구니에 추가되었습니다.");
+	} else if(result == '2'){
+		alert("장바구니에 이미 추가되어져 있습니다.");
+	} else if(result == '5'){
+		alert("로그인이 필요합니다.");	
+	}
+}
+</script>
