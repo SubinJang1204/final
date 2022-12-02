@@ -478,7 +478,7 @@
 					<a href="/shop/${shop.getShopnum()}">
 						<div class="shop-image">
 							<picture>
-								<img src="${shop.getPhoto()}" />
+								<img src="/shopphoto/${shop.getPhoto()}" />
 							</picture>
 						</div>
 						<div class="shop-text">
@@ -505,7 +505,7 @@
 					<a href="/shop/{shopnum}">
 						<div class="shop-image">
 							<picture>
-								<img src="{photo}" />
+								<img src="/shopphoto/{photo}" />
 							</picture>
 						</div>
 						<div class="shop-text">

@@ -19,21 +19,31 @@ public class FileUploadService {
 	// 경로 설정 추후에 재 적용 필요
 	private final String defaultPath = "src/main/resources/static/upload";
 	
-	public String upload(MultipartFile file) {
+	public String upload(MultipartFile file, String url) {
 		String fileFullName = null;
 		Path uploadLocation = null;
 		
 		try {
-			URL uploadUrl = ClassLoader.getSystemResource(defaultPath);
 			Path uploadPath = null;
-			if (uploadUrl == null) {
-				uploadPath = Paths.get(defaultPath);
+			URL uploadUrl = null;
+			if (url == null || "".equals(url)) {
+				uploadUrl = ClassLoader.getSystemResource(defaultPath);
 
-				if (!Files.exists(uploadPath)) {
-					Files.createDirectory(uploadPath);
+				if (uploadUrl == null) {
+					uploadPath = Paths.get(defaultPath);
+
+					if (!Files.exists(uploadPath)) {
+						Files.createDirectory(uploadPath);
+					}
+				} else {
+					uploadPath = Paths.get(uploadUrl.toURI());
 				}
 			} else {
-				uploadPath = Paths.get(uploadUrl.toURI());
+				uploadPath = Paths.get(url);
+				
+				if (!Files.exists(uploadPath)) {
+					new File(uploadPath.toString()).mkdirs();
+				}
 			}
 
 			while (true) {
