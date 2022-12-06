@@ -42,14 +42,14 @@ alert("먼저 로그인 후 글을 써주세요");
 history.back();
 </script>
 </c:if>
-
-	<form action="update" method="post" enctype="multipart/form-data">
+<center>
+	<form action="update" method="post" enctype="multipart/form-data" style="margin-top:200px;margin-left:700px;">
 	
-	<input type="text" name="num" value="${dto.num }">
-	<input type="text" name="currentPage" value="${currentPage}">
-	<input type="text" name="regroup" value="${dto.regroup }">
-	<input type="text" name="restep" value="${dto.restep }">
-	<input type="text" name="relevel" value="${dto.relevel}">
+	<input type="hidden" name="num" value="${dto.num }">
+	<input type="hidden" name="currentPage" value="${currentPage}">
+	<input type="hidden" name="regroup" value="${dto.regroup }">
+	<input type="hidden" name="restep" value="${dto.restep }">
+	<input type="hidden" name="relevel" value="${dto.relevel}">
 	
 	<input type="hidden" name="id" value="${sessionScope.myid }">
 	
@@ -78,11 +78,12 @@ history.back();
 	
 	<tr>
 	<td colspan="2" align="center">
-	<button type="submit" class="btn btn-default" style="width:100px;">게시글 저장</button>
-	<button type="button" class="btn btn-default" style="width:100px;" onclick="location.href='list'">목록</button>
+	<button type="submit" class="btn btn-default" style="width:120px;">게시글 저장</button>
+	<button type="button" class="btn btn-default" style="width:120px;" onclick="location.href='list'">목록</button>
 	</td>
 	</tr>
 	</table>
 	</form>
+	</center>
 </body>
 </html>

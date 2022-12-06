@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="boot.sist.mapper.LankMapperInter">
+  
+    <select id="getList" resultType="Shop">
+       select * from shop where category='신발' order by likes desc
+    </select>
+    <select id="getAlist" resultType="Shop">
+       select * from shop where category='상의' or sub_category='바지' order by likes desc
+    </select>
+    <select id="getBlist" resultType="Shop">
+       select * from shop order by likes desc
+    </select>
+    <select id="getNum" parameterType="int" resultType="Shop">
+    select*from shop where shopnum=#{shopnum}
+    </select>   
+   
+     <update id="likesUpdate" parameterType="int">
+    update shop set likes=likes+1 where shopnum=#{shopnum}
+   </update>
+  </mapper>

@@ -28,8 +28,6 @@
 	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
 	crossorigin="anonymous"></script>
 
-
-<title></title>
 <style type="text/css">
 * {
 	font-family: 'Gowun Dodum', sans-serif;
@@ -89,6 +87,121 @@
 	-webkit-filter: grayscale(0%);
 	filter: grayscale(0%);
 }
+a{
+text-decoration: none;
+color:black;
+}
+a:hover{
+text-decoration: none;
+color:black;
+}
+
+
+figure.snip1368 {
+  font-family: 'Roboto', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 230px;
+  max-width: 315px;
+  width: 100%;
+  color: #ffffff;
+  line-height: 1.4em;
+  border-radius: 8px;
+}
+figure.snip1368 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+figure.snip1368 img {
+  opacity: 1;
+  width: 100%;
+  vertical-align: top;
+  border-radius: 8px;
+}
+
+figure.snip1368 h3 {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  background-color: #212121;
+  z-index: 1;
+  text-align: right;
+  padding: -2px;
+  margin: 0;
+  font-weight: 300;
+  font-size: 1.3em;
+  -webkit-transform: translateY(-200%);
+  transform: translateY(-200%);
+  
+}
+figure.snip1368 h3:before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 315px 55px 0;
+  border-color: transparent #212121 transparent transparent;
+}
+figure.snip1368 figcaption {
+  padding: 5px 25px 15px;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  bottom: 0%;
+  background-color: #141414;
+  -webkit-transform: translateY(200%);
+  transform: translateY(200%);
+}
+figure.snip1368 figcaption:before {
+  position: absolute;
+  content: '';
+  bottom: 100%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 55px 0 0 315px;
+  border-color: transparent transparent transparent #141414;
+}
+figure.snip1368 .icons {
+  font-size:1.5em;
+  float:left;
+  left:7px;
+  position: absolute;
+  top:35px;
+  -webkit-transform: translateY(-200%);
+  transform: translateY(-200%); 
+}
+
+figure.snip1368:hover h3,
+figure.snip1368.hover h3 {
+  -webkit-transform: translateY(0%);
+  transform: translateY(0%);
+}
+figure.snip1368:hover figcaption,
+figure.snip1368.hover figcaption {
+  -webkit-transform: translateY(0%);
+  transform: translateY(0%);
+}
+
+.best{
+	width:300px;
+	height:300px;
+	display:inline-block;
+	position: relative;
+	margin-left:35px;
+	margin-right:35px;
+}
+img:hover{
+cursor:pointer;
+}
+
 </style>
 </head>
 
@@ -127,22 +240,24 @@
 				<caption>전체 상품</caption>
 			</div>
 			<div class="links">
-				<div class="scale">
-					<img src="../image/q1.png">
-				</div>
-				<caption>여성별 인기상품</caption>
-			</div>
-			<div class="links">
-				<div class="scale">
+				<div class="scale"><a href="#cloth">
 					<img src="../image/q2.png">
 				</div>
-				<caption>남성별 인기상품</caption>
+				<caption>의류별 인기상품</caption></a>
 			</div>
 			<div class="links">
-				<div class="scale">
+				<div class="scale"><a href="#shoes">
+					<img src="../image/q3.png">
+				</div>
+				
+				<caption>신발별 인기상품</caption>
+				</a>
+			</div>
+			<div class="links">
+				<div class="scale"><a href="#all">
 					<img src="../image/q4.png">
 				</div>
-				<caption>전체 인기 상품</caption>
+				<caption>전체 인기 상품</caption></a>
 			</div>
 			<br>
 			<br>
@@ -171,7 +286,71 @@
 				<caption>고객센터</caption>
 			</div>
 		</div>
-	</center>
+		
+	
+		
+		
+<a name="all">
+<div style="background-color:#F9F9F9;width:100vw;height:450px;display:inline-block;position:relative;margin-top:40px;margin-left:-10px">
+<caption><h4 style="font-size:1.2em;font-weight:600;margin-left:-890px;margin-bottom:-10px;margin-top:60px">전체 인기 상품</h4></caption><br>
+ <c:forEach var="bdto" items="${blist }" varStatus="i" begin="0" end="2" step="1">
+ <div class="best">
+  <figure class="snip1368" style="background-color:white;box-shadow: 4px 4px 4px 4px rgba(0.1, 0.1, 0.1, 0.1);">
+	<img src="../shopphoto/${bdto.photo }" style="width:300px;height:300px;"><br>
+	
+	<h3>${i.count }. ${bdto.sangpum }&nbsp;</h3>
+  <figcaption>
+    <div class="icons">
+    
+	￦<fmt:formatNumber value="${bdto.price }" pattern="#,###"/>	
+    </div>
+  </figcaption>
+</figure>
+	</div> 
+	</c:forEach> 
+</div>
+</a>
+<a name="shoes">
+<div style="width:100vw;height:350px;display:inline-block;position:relative;margin-top:100px;">
+<caption><h4 style="font-size:1.2em;font-weight:600;margin-left:-890px;margin-bottom:-10px;margin-top:-40px">신발 인기 상품</h4></caption><br>
+ <c:forEach var="dto" items="${list }" varStatus="i" begin="0" end="2" step="1">
+ <div class="best">
+  <figure class="snip1368" style="box-shadow: 4px 4px 4px 4px rgba(0.1, 0.1, 0.1, 0.1) ;">
+	<img src="../shopphoto/${dto.photo }" style="width:300px;height:300px;"><br>
+	
+	<h3>${i.count }. ${dto.sangpum }&nbsp;</h3>
+  <figcaption>
+    <div class="icons">
+    
+	￦<fmt:formatNumber value="${dto.price }" pattern="#,###"/>	
+    </div>
+  </figcaption>
+</figure>
+	</div> 
+	</c:forEach> 
+</div>
+</a>
 
+<a name="cloth">
+<div style="background-color:#F9F9F9;width:100vw;height:450px;display:inline-block;position:relative;">
+<caption><h4 style="font-size:1.2em;font-weight:600;margin-left:-890px;margin-bottom:-10px;margin-top:60px;">의류 인기 상품</h4></caption><br>
+ <c:forEach var="adto" items="${alist }" varStatus="i" begin="0" end="2" step="1">
+ <div class="best">
+   <figure class="snip1368" style="background-color:white;box-shadow: 4px 4px 4px 4px rgba(0.1, 0.1, 0.1, 0.1);">
+	<img src="../shopphoto/${adto.photo }" style="width:300px;height:300px;"><br>
+	
+	<h3>${i.count }. ${adto.sangpum }&nbsp;</h3>
+  <figcaption>
+    <div class="icons">
+    
+	￦<fmt:formatNumber value="${adto.price }" pattern="#,###"/>	
+    </div>
+  </figcaption>
+</figure>
+	</div> 
+	</c:forEach> 
+</div>
+</a>
+</center>
 </body>
 </html>

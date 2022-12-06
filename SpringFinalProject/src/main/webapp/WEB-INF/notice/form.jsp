@@ -42,8 +42,8 @@ alert("먼저 로그인 후 글을 써주세요");
 history.back();
 </script>
 </c:if>
-
-	<form action="insert" method="post" enctype="multipart/form-data">
+<center>
+	<form action="insert" method="post" enctype="multipart/form-data" style="margin-top:200px;margin-left:700px">
 	
 	<!-- 몰래 넘겨줘야함 -->
 	<input type="hidden" name="num" value="${num }">
@@ -79,11 +79,12 @@ history.back();
 	
 	<tr>
 	<td colspan="2" align="center">
-	<button type="submit" class="btn btn-default" style="width:100px;">게시글 저장</button>
-	<button type="button" class="btn btn-default" style="width:100px;" onclick="location.href='list'">목록</button>
+	<button type="submit" class="btn btn-default" style="width:120px;">게시글 저장</button>
+	<button type="button" class="btn btn-default" style="width:120px;" onclick="location.href='list'">목록</button>
 	</td>
 	</tr>
 	</table>
 	</form>
+	</center>
 </body>
 </html>

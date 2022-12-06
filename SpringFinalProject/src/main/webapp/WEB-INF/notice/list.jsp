@@ -51,18 +51,15 @@ text-decoration: none;
 </head>
 <c:set var="root" value="<%=request.getContextPath()%>" />
 <body>
-
-<caption>
-		<h4 style="font-weight: 600; margin-top: 100px; margin-left: 445px; margin-bottom: 50px;">공지사항</h4>
-	</caption>
-<div class="boardlist" style="margin-top:20px;margin-left:450px;">
+<img src="../image/banner1.png">
+<div class="boardlist" style="margin-top:50px;margin-left:450px;">
 
 <table class="table table-bordered" style="width:1000px ">
 <tr>
 <div class="searcharea" style="width:100%;text-align:center">
 <!-- 검색창 -->
 <form action="list" class="form-inline">
-<div style="width:450px;display:inline-block;margin-right:170px;float:right;margin-bottom:30px;">
+<div style="width:450px;display:inline-block;margin-right:370px;float:right;margin-bottom:30px;">
 <select class="form-select" style="width:80px;display:inline-block" name="searchcolumn">
 <option value="subject">제목</option>
 <option value="content">내용</option>
@@ -122,7 +119,7 @@ style="width:150px;display:inline-block" placeholder="검색 단어">
 	<c:if test="${myid=='admin' }">
 	<tr>
 	<td colspan="6" align="right">
-	<button type="button" class="btn btn-info" onclick="location.href='form'">답변형 폼</button>
+	<button type="button" class="btn btn-dark" onclick="location.href='form'">답변형 폼</button>
 	</td>
 	</tr>
 	</c:if>

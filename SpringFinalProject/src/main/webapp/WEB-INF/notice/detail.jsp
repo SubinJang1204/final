@@ -60,9 +60,11 @@ cursor:pointer;
 		<tr>
 			<td colspan="6"><br>
 			<br>
-			
-			
+			<center>
+			<c:if test="${dto.photo!='no' }">
 			<img src="../photo/${dto.photo }"><br>
+			 </c:if>
+			 </center>
 			 ${dto.content } <br>
 			
 			<br></td>

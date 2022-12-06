@@ -97,10 +97,11 @@ $(function(){
 </style>
 </head>
 <body>
-<div class="searcharea" style="width:100%;text-align:center;position:relative;top:100px;left:-65px;">
+<img src="../image/banner2.png">
+<div class="searcharea" style="width:100%;text-align:center;position:relative;top:50px;left:-65px;">
 <!-- 검색창 -->
 <form action="list" class="form-inline">
-<div style="width:450px;display:inline-block;margin-right:170px;float:right;margin-bottom:30px;">
+<div style="width:450px;display:inline-block;margin-right:270px;float:right;margin-bottom:30px;">
 <select class="form-select" style="width:80px;display:inline-block" name="searchcolumn">
 <option value="subject">제목</option>
 <option value="content">내용</option>
@@ -115,18 +116,15 @@ style="width:150px;display:inline-block" placeholder="검색 단어">
 	<c:if test="${totalCount==0 }">
 		<h2>리스트가 없습니다</h2>
 	</c:if>
-	<caption>
-		<h4
-			style="font-weight: 600; margin-top: 100px; margin-left: 430px; margin-bottom: 50px;">이벤트</h4>
-	</caption>
+	
 	<c:if test="${myid=='admin' }">
 		<button type="button"
-			style="top: -83px; position: relative; margin-left: 520px;"
+			style="top: 51px; position: relative; margin-left: 430px;"
 			class="btn btn-dark" onclick="location.href='insertform'">상품
 			추가</button>
 	</c:if>
 	<div class="con"
-		style="width: 1400px; height: auto; margin-left: 430px;">
+		style="width: 1400px; height: auto; margin-left: 430px;margin-top:120px;">
 
 		<c:if test="${totalCount>0 }">
 			<c:forEach var="dto" items="${list }" varStatus="i">
