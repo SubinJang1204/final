@@ -96,7 +96,7 @@
 					<h5 class="flex-fill w-100">${dto.r_subject } ∙  <fmt:formatNumber value="${dto.r_price }" pattern="###,###" />원</h5>
 				</div>
 				<p>seller ID : ${dto.seller} ∙ buyer ID : ${dto.buyer}</p>
-				<button type='button' onclick="history.back()" class='btn btn-outline-dark btn-sm writeresell'>이전 페이지로 이동</button>
+				<button type='button' onclick="location.href='../resell/list'" class='btn btn-outline-dark btn-sm writeresell'>이전 페이지로 이동</button>
 			</div>
 		</div>
 		

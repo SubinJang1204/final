@@ -250,7 +250,7 @@ textarea::placeholder {
                      href="${root}/login/logoutprocess"><i
                         class="bi bi-box-arrow-left" id="hov" style="font-size: 18pt;"></i></a></li>&nbsp;&nbsp;&nbsp;
 
-                  <li><a href="mypage"><i class="bi bi-person" id="hov"
+                  <li><a href="/mypage/myinfo"><i class="bi bi-person" id="hov"
                         style="font-size: 18pt;"></i></a></li>&nbsp;&nbsp;&nbsp;
 
                   

@@ -20,7 +20,7 @@
 <div style="clear: both"></div>
 
 <ul class="mainSnsNav">
-	<button class="liNav">Trend Now</button>
+	<button class="liNav" onclick="location.href='../trend/list'">Trend Now</button>
 	<button class="liNav selected" onclick="location.href='list'">Fashion SNS</button>
 	<button class="liNav" onclick="location.href='../resell/list'">Re-sell Market</button>
 </ul>
@@ -31,7 +31,7 @@
 	<button type="button" id="writebtn" class="btn btn-outline-dark btn-lg writebtn">새 글 작성</button>
 </div>
 
-<section style="width: 100%; max-width:1300px;  margin: auto;" class="container" >
+<section style="width: 100%; max-width:1300px; margin: auto;" class="container" >
 	<div class="row row-cols-1 row-cols-md-3 g-4 snsList">
 	<!-- 리스트 출력 -->
 	</div>
@@ -95,7 +95,9 @@
         	<div class="ModelTextarea p-3">
         		<div class="d-flex align-items-center">
 				  <div class="flex-shrink-0">
-				    <img id="M_photo" src="../snsphoto/user.png" style="max-width: 30px;">
+					<div style="width: 30px; height: 30px; border-radius:15px; overflow:hidden;">
+					    <img id="M_photo" src="../snsphoto/user.png" style="width: 100%; height: 100%; over-fit:cover;">
+					</div>
 				  </div>
 				  <div class="flex-grow-1 ms-3">		    
 			        <h4 class="fw-bold" id="detailId"></h4>

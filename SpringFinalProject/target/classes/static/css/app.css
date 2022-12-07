@@ -3,7 +3,6 @@
 * { 
 font-family: 'Gowun Dodum', sans-serif;
 }
-
 /* 카드 애니메이션 */
 .fadein {-webkit-animation: fadein 1s;}
 @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }

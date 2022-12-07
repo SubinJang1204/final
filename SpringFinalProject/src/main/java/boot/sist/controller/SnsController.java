@@ -59,6 +59,13 @@ public class SnsController {
 		return model;
 	}
 	
+	@GetMapping("/trend/list")
+	public ModelAndView trend() {
+		ModelAndView model=new ModelAndView();
+		model.setViewName("/sns/youtube");
+		return model;
+	}
+	
 	@GetMapping("/sns/getlist")
 	@ResponseBody
 	public List<SnsDto> getList(@RequestParam(defaultValue = "1") int currentPage) {
@@ -121,8 +128,8 @@ public class SnsController {
 		dto.setM_id(myid);
 		dto.setM_name(mdto.getName());
 		dto.setM_num(Integer.parseInt(mdto.getNum()));
-		// dto.setM_photo(mdto.getPhoto());
-		dto.setM_photo("no");
+		dto.setM_photo(mdto.getPhoto());
+		// dto.setM_photo("no");
 		service.insertSns(dto);
 	}
 	
@@ -223,8 +230,8 @@ public class SnsController {
 		adto.setM_id(myid);
 		adto.setM_name(mdto.getName());
 		adto.setM_num(Integer.parseInt(mdto.getNum()));
-		// adto.setM_idphoto(mdto.getPhoto());
-		adto.setM_idphoto("no");
+		adto.setM_idphoto(mdto.getPhoto());
+		// adto.setM_idphoto("no");
 		
 		mapper.insertSnsAnswer(adto);
 	}
