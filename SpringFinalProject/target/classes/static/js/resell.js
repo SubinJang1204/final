@@ -16,14 +16,14 @@ function next_ResellLoad() {
 		dataType: "JSON",
 		success: function(data) {
 			if (data) {
-				console.log(currentPage + ' page load');
+				// console.log(currentPage + ' page load');
 				/* 이미지 동적 추가 */
 				var s = "";
 				$.each(data, function(idx, item) {
 					let price = item.price;
 					let result = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 				
-					s += "<div class='card ps-0 m-3 shadow-sm resellcard' style='max-width: 1000px;'>";
+					s += "<div class='card ps-0 m-3 shadow-sm resellcard fadein' style='max-width: 1000px;'>";
 					s += "	<a num='"+item.num+"' class='cardDetail' href='#'>";
 					s += "	<div class='row g-0'>";
 					s += "	<div class='col-md-4'>";

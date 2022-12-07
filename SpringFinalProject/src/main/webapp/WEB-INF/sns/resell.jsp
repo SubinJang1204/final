@@ -19,7 +19,7 @@
 <body>
 
 <ul class="mainSnsNav">
-	<button class="liNav">Trend Now</button>
+	<button class="liNav" onclick="location.href='../trend/list'">Trend Now</button>
 	<button class="liNav" onclick="location.href='../sns/list'">Fashion SNS</button>
 	<button class="liNav selected" onclick="location.href='list'">Re-sell Market</button>
 </ul>
