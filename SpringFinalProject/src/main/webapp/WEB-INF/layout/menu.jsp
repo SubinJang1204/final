@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <link
    href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
@@ -29,47 +28,38 @@
    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
    crossorigin="anonymous"></script>
 
-
 <title>Insert title here</title>
 <style type="text/css">
 .dropdown:hover .dropdown-menu {
    display: block;
    margin-top: 0;
 }
-
 * {
    font-family: 'Gowun Dodum', sans-serif;
 }
-
 li {
    margin-right: 10px;
    margin-top: 10px;
    color: #000;
 }
-
 li a {
    color: #000;
    text-decoration: none;
 }
-
 li a:hover {
    color: #000;
    text-decoration: none;
 }
-
 li a:visited {
    color: #000;
    text-decoration: none;
 }
-
 html {
    scroll-behavior: smooth;
 }
-
 .menu i {
    cursor: pointer;
 }
-
 .menu .hide {
    display: none;
    position: relative;
@@ -81,19 +71,16 @@ html {
    backdrop-filter: blur(20px);
    color: #fff;
 }
-
 .profile img {
    border-radius: 100%;
    width: 150px;
    height: 150px;
 }
-
 .profile img:hover {
    width: 160px;
    height: 160px;
    transition: 0.3s;
 }
-
 .profile {
    text-align: center;
    width: 300px;
@@ -102,13 +89,11 @@ html {
    top: 160px;
    left: 220px;
 }
-
 span.search {
    position: relative;
    top: 130px;
    left: 300px;
 }
-
 .search-box {
    padding: 10px;
    top: -180px;
@@ -122,30 +107,25 @@ span.search {
    transition: 0.4s;
    width: 500px;
 }
-
 .search-box:hover {
    box-shadow: 0px 0px .5px 1px #fff;
    width: 800px;
 }
-
 .search-box:hover>.search-btn {
    background-color: #fff;
    position: relative;
    left: -20px;
 }
-
 .search-btn {
    font-size: 20pt;
    left: 410px;
    top: -5px;
    position: relative;
 }
-
 .search-btn i {
    background-color: transparent;
    border-radius: 100%;
 }
-
 .search-txt {
    display: flex;
    padding: 0;
@@ -159,38 +139,31 @@ span.search {
    transition: .4s;
    color: #000;
 }
-
 .search-box:hover>.search-txt {
    width: 700px;
    padding: 0 6px;
 }
-
 textarea::placeholder {
    color: #000;
 }
-
 .Q_link {
    position: relative;
    display: block;
    top: -200px;
    left: 1450px;
 }
-
 .Q_link span {
    margin-bottom: 20px;
    font-size: 1.5em;
    position: relative;
 }
-
 .Q_link span:hover {
    top: -5px;
 }
 </style>
 </head>
-
 <c:set var="root" value="<%=request.getContextPath()%>" />
 <body>
-
    <nav class="navbar navbar-expand-lg sticky-top">
       <div class="container-fluid">
 
@@ -218,18 +191,14 @@ textarea::placeholder {
                      <li><a class="dropdown-item" href="#" style="color: #000;">Dropdown
                            Menu3</a></li>
                   </ul></li>
-               <li class="nav-item"><a class="nav-link" href="#"
-                  style="color: #000;">Menu1</a></li>
+              
                <li class="nav-item"><a class="nav-link" href="${root}/shop"
                   style="color: #000;">Shop</a></li>
                <li class="nav-item"><a class="nav-link"
                   href="${root}/sns/list" style="color: #000;">Trend</a></li>
                <li class="nav-item"><a class="nav-link"
                   href="${root}/alba/albalist" style="color: #000;">Recruit</a></li>
-                  
-
-
-
+     
                <c:if test="${sessionScope.loginok==null }">
 
                   <li style="margin-left: 883px;"><a href="${root}/login/main"><i
@@ -251,12 +220,10 @@ textarea::placeholder {
 
                   <li><a href="/mypage/myinfo"><i class="bi bi-person" id="hov"
                         style="font-size: 18pt;"></i></a></li>&nbsp;&nbsp;&nbsp;
-
                   
                   <li><a href="cart?myid=${myid }"><i class="bi bi-bag"
                         id="hov" style="font-size: 16pt;"></i>
-                        <div
-                           style="color: white; background-color: #000; width: 17px; top: -24px; height: 17px; border-radius: 100%; position: relative; left: 15px; font-size: 13px; line-height: 17px;">&nbsp;0</div></a></li>&nbsp;&nbsp;&nbsp;
+                        <div style="color: white; background-color: #000; width: 17px; top: -24px; height: 17px; border-radius: 100%; position: relative; left: 15px; font-size: 13px; line-height: 17px;">&nbsp;0</div></a></li>&nbsp;&nbsp;&nbsp;
                
                   <li style="cursor: pointer;" class="menu"><i
                      class="bi bi-justify" style="font-size: 18pt; top: 3px"></i> <c:if
@@ -264,15 +231,15 @@ textarea::placeholder {
                         <div class="hide" style="left: -1650px;">
                      </c:if> <c:if test="${myid!='admin' }">
                         <div class="hide">
-                     </c:if> <span>
+                     </c:if><span>
 
                         <div class="profile" onclick="location.href='mypage'">
                            <img src="${root }/photo/${sessionScope.loginphoto}"><br>
                            <br> <span class="loginname">${loginname}님 환영합니다</span>
                         </div>
-                  </span> <span class="search">
-                        <form name="search" method="post" action="search"
-                           target="_parent" id="search_right">
+                  </span>
+                  <span class="search">
+                        <form name="search" method="post" action="search" target="_parent" id="search_right">
                            <div class="search-box">
                               <input type="text" class="search-txt" name="search"
                                  placeholder="search..." onkeydown="onEnterSubmit()">
