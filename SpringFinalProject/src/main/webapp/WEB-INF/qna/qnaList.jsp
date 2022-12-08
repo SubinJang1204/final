@@ -52,9 +52,6 @@ font-family: 'Gowun Dodum', sans-serif;
 			<li class="nav-item">
 				<a class="nav-link" href="qnaform?currentPage=${ currentPage }"><b>문의하기</b></a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href=""><b>나의 문의</b></a>
-			</li>
 		</ul>
 	</nav>
 	<table class="table table-hover" style="width: 1200px; margin-top: 30px; margin-left: 20%;">
