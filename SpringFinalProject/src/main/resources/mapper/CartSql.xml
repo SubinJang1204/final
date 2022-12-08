@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="boot.sist.mapper.CartMapperInter">
+  	<!-- 카트 추가 -->
+  	<insert id="addCart">
+		insert into cart(m_num, p_num, cnt, sangpumsize, color) values(#{m_num}, #{p_num}, #{cnt}, #{sangpumsize}, #{color}) 
+	</insert>
+	
+	<!-- 카트 삭제 -->
+	<delete id="deleteCart" >
+		delete from cart where c_num = #{c_num}
+	</delete>
+	
+	<!-- 카트 수량 수정 -->
+	<update id="modifyCount" >
+		update cart set cnt=#{cnt} where c_num = #{c_num}
+	</update>
+	
+	<!-- 카트 목록 -->
+	<select id="getCart" resultType="cart">
+		select a.c_num, a.m_num, a.p_num, a.cnt, a.sangpumsize, a.color, b.sangpum, b.price
+		from cart a left outer join shop b on a.p_num = b.shopnum
+		where m_num = #{m_num}
+	</select>
+	
+	<!-- 카트 확인 -->
+	<select id="checkCart" resultType="cart">
+		select * from cart where m_num = #{m_num} and p_num = #{p_num}
+	</select>
+	
+	<!-- m_num추출 -->
+	<select id="getMnum" parameterType="String" resultType="int">
+		select num from member where id=#{id}
+	</select>
+
+	<!-- cart에서 목록삭제 -->
+	<delete id="deleteOrderCart">
+		delete from cart where m_num = #{m_num} and p_num = #{p_num}
+	</delete>
+  </mapper>
