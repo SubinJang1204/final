@@ -37,6 +37,7 @@ import boot.sist.entity.ShopStyleReviewCommentEntity;
 import boot.sist.entity.ShopStyleReviewEntity;
 import boot.sist.entity.ShopStyleReviewInsertEntity;
 import boot.sist.entity.ShopStyleReviewListEntity;
+import boot.sist.service.CartService;
 import boot.sist.service.FileUploadService;
 import boot.sist.service.ShopService;
 
@@ -45,6 +46,9 @@ import boot.sist.service.ShopService;
 public class ShopController {
 	@Autowired
 	ShopService shopService;
+	
+	@Autowired
+	CartService cartService;
 	
 	@Autowired
 	FileUploadService fileUploadService;
@@ -129,12 +133,16 @@ public class ShopController {
 		String memberId = (String) session.getAttribute("loginid");
 		ShopEntity shopEntity = new ShopEntity(memberId, shopId);
 		
+		String myid=(String)session.getAttribute("myid");
+		int m_num=cartService.getMnum(myid);
+		
 		ShopStyleReviewListEntity styleReviewListEntity = new ShopStyleReviewListEntity(shopId, 0, 8);
 		
 		ShopDto shop = shopService.getShop(shopEntity);
 		List<ShopStyleReviewDto> styleReviewList = shopService.getStyleReviewList(styleReviewListEntity);
 		int styleReviewListCount = shopService.getStyleReviewListCount(shopId);
 		
+		model.put("m_num", m_num);
 		model.put("shop", shop);
 		model.put("styleReviewList", styleReviewList);
 		model.put("styleReviewListPage", styleReviewListEntity.getOffset());

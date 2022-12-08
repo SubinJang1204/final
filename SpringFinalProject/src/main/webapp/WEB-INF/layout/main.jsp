@@ -27,18 +27,17 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
 	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
 	crossorigin="anonymous"></script>
-
+	
+<script type="text/javascript" src="/js/weather.js"></script>
 <style type="text/css">
 * {
 	font-family: 'Gowun Dodum', sans-serif;
 }
-
 .f_link {
 	width: 1200px;
 	height: auto;
 	margin-top: 40px;
 }
-
 .links {
 	display: inline-block;
 	width: 250px;
@@ -46,25 +45,21 @@
 	margin-left: 5px;
 	margin-right: 5px;
 }
-
 .links img {
 	border-radius: 8px;
 	-webkit-filter: grayscale(70%);
 	filter: grayscale(70%);
 	cursor: pointer;
 }
-
 .scale {
 	width: 250px;
 	height: 120px;
 	overflow: hidden;
 	border-radius: 8px;
 }
-
 .scale img {
 	border-radius: 8px;
 }
-
 .scale img:hover {
 	border-radius: 8px;
 	cursor: pointer;
@@ -77,12 +72,10 @@
 	-moz-transition: transform .35s;
 	-webkit-transition: transform .35s;
 }
-
 .scale img {
 	width: 250px;
 	height: 120px;
 }
-
 .links img:hover {
 	-webkit-filter: grayscale(0%);
 	filter: grayscale(0%);
@@ -95,8 +88,6 @@ a:hover{
 text-decoration: none;
 color:black;
 }
-
-
 figure.snip1368 {
   font-family: 'Roboto', Arial, sans-serif;
   position: relative;
@@ -121,7 +112,6 @@ figure.snip1368 img {
   vertical-align: top;
   border-radius: 8px;
 }
-
 figure.snip1368 h3 {
   position: absolute;
   top: 0%;
@@ -178,7 +168,6 @@ figure.snip1368 .icons {
   -webkit-transform: translateY(-200%);
   transform: translateY(-200%); 
 }
-
 figure.snip1368:hover h3,
 figure.snip1368.hover h3 {
   -webkit-transform: translateY(0%);
@@ -189,7 +178,6 @@ figure.snip1368.hover figcaption {
   -webkit-transform: translateY(0%);
   transform: translateY(0%);
 }
-
 .best{
 	width:300px;
 	height:300px;
@@ -202,6 +190,23 @@ img:hover{
 cursor:pointer;
 }
 
+#temp {
+	height: 50px;
+	width: 350px;
+	position: absolute;
+	top: 525px;
+	left: 70px;
+}
+#temp{
+    height: 50px;
+    overflow: hidden;
+}
+#temp>ul{
+    height: 50px;
+}
+#temp>ul>li{
+    height: 50px;
+}
 </style>
 </head>
 
@@ -296,7 +301,8 @@ cursor:pointer;
  <c:forEach var="bdto" items="${blist }" varStatus="i" begin="0" end="2" step="1">
  <div class="best">
   <figure class="snip1368" style="background-color:white;box-shadow: 4px 4px 4px 4px rgba(0.1, 0.1, 0.1, 0.1);">
-	<img src="../shopphoto/${bdto.photo }" style="width:300px;height:300px;"><br>
+	<a href="${root }/shop/${bdto.shopnum }">
+	<img src="../shopphoto/${bdto.photo }" style="width:300px;height:300px;"></a><br>
 	
 	<h3>${i.count }. ${bdto.sangpum }&nbsp;</h3>
   <figcaption>
@@ -316,7 +322,8 @@ cursor:pointer;
  <c:forEach var="dto" items="${list }" varStatus="i" begin="0" end="2" step="1">
  <div class="best">
   <figure class="snip1368" style="box-shadow: 4px 4px 4px 4px rgba(0.1, 0.1, 0.1, 0.1) ;">
-	<img src="../shopphoto/${dto.photo }" style="width:300px;height:300px;"><br>
+  <a href="${root }/shop/${dto.shopnum }">
+	<img src="../shopphoto/${dto.photo }" style="width:300px;height:300px;"></a><br>
 	
 	<h3>${i.count }. ${dto.sangpum }&nbsp;</h3>
   <figcaption>
@@ -337,7 +344,8 @@ cursor:pointer;
  <c:forEach var="adto" items="${alist }" varStatus="i" begin="0" end="2" step="1">
  <div class="best">
    <figure class="snip1368" style="background-color:white;box-shadow: 4px 4px 4px 4px rgba(0.1, 0.1, 0.1, 0.1);">
-	<img src="../shopphoto/${adto.photo }" style="width:300px;height:300px;"><br>
+	<a href="${root }/shop/${adto.shopnum }">
+	<img src="../shopphoto/${adto.photo }" style="width:300px;height:300px;"></a><br>
 	
 	<h3>${i.count }. ${adto.sangpum }&nbsp;</h3>
   <figcaption>
@@ -352,5 +360,27 @@ cursor:pointer;
 </div>
 </a>
 </center>
+ 
+<div id="temp">
+			<ul>
+				<li id="gw">강원도</li>
+				<li id="gg">경기도</li>
+				<li id="gn">경상남도</li>
+				<li id="gb">경상북도</li>
+				<li id="gj">광주광역시</li>
+				<li id="dg">대구광역시</li>
+				<li id="dj">대전광역시</li>
+				<li id="bs">부산광역시</li>
+				<li id="su">서울특별시</li>
+				<li id="sj">세종특별자치시</li>
+				<li id="us">울산광역시</li>
+				<li id="ic">인천광역시</li>
+				<li id="jn">전라남도</li>
+				<li id="jb">전라북도</li>
+				<li id="jj">제주특별자치도</li>
+				<li id="cn">충청남도</li>
+				<li id="cb">충청북도</li>
+			</ul>
+		</div>
 </body>
 </html>

@@ -149,7 +149,7 @@ textarea::placeholder {
 .Q_link {
    position: relative;
    display: block;
-   top: -200px;
+   top: -230px;
    left: 1450px;
 }
 .Q_link span {
@@ -223,7 +223,7 @@ textarea::placeholder {
                   
                   <li><a href="cart?myid=${myid }"><i class="bi bi-bag"
                         id="hov" style="font-size: 16pt;"></i>
-                        <div style="color: white; background-color: #000; width: 17px; top: -24px; height: 17px; border-radius: 100%; position: relative; left: 15px; font-size: 13px; line-height: 17px;">&nbsp;0</div></a></li>&nbsp;&nbsp;&nbsp;
+                        <div style="color: white; background-color: #000; width: 17px; top: -24px; height: 17px; border-radius: 100%; position: relative; left: 15px; font-size: 13px; line-height: 17px;">&nbsp;${count }</div></a></li>&nbsp;&nbsp;&nbsp;
                
                   <li style="cursor: pointer;" class="menu"><i
                      class="bi bi-justify" style="font-size: 18pt; top: 3px"></i> <c:if
@@ -270,14 +270,12 @@ textarea::placeholder {
       $(document).ready(function() {
          $(".menu>i").click(function() {
             var submenu = $(this).next(".hide");
-
             if (submenu.is(":visible")) {
                submenu.slideUp();
             } else {
                submenu.slideDown();
             }
          });
-
       });
    </script>
 </body>

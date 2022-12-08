@@ -44,12 +44,13 @@
 					</p>
 				</div>
 				
-				<!-- 주문 form -->
+					<!-- 주문 form -->
 			<form action="/order/${sessionScope.myid}" method="get" class="order_form">
 				<input type="hidden" name="orders[0].p_num" value="${shop.getShopnum()}">
 				<input type="hidden" name="orders[0].cnt" value="">
 			</form>	
-				
+			
+	
 				<div class="shop-delivery-info">
 					<p class="shop-sublabeltext">배송 정보</p>
 					<div class="shop-delivery-list">
@@ -339,6 +340,35 @@ $(".btn-cart").on("click", function(e){
 		}
 	});
 });
+=======
+
+//즉시 구매
+$(".btn-buy").on("click", function(){
+	alert("즉시 구매합니다.");
+	let cnt = 1;
+	$(".order_form").find("input[name='orders[0].cnt']").val(cnt);
+	$(".order_form").submit();
+});
+
+//장바구니 추가 버튼 0
+$(".btn-cart").on("click", function(e){
+	//form.bookCount = $(".quantity_input").val();
+	$.ajax({
+		url: '/cart/add',
+		type: 'post',	
+		dataType: 'json',
+		data: {	m_num : "${m_num}",
+			p_num : "${shop.shopnum}",
+			cnt : "1",
+			sangpumsize : "${shop.sangpumsize}",
+			color : '${shop.color}'}
+	,
+		success: function(result){
+			cartAlert(result);
+		}
+	});
+});
+
 function cartAlert(result){
 	if(result == '0'){
 		alert("장바구니에 추가를 하지 못하였습니다.");
