@@ -428,7 +428,7 @@ height: 110px;
 						</colgroup>
 						<tbody>
 							<tr>
-								<th>이미지</th>
+								<th> </th>
 								<th>상품 정보</th>
 								<th>판매가</th>
 							</tr>
@@ -443,8 +443,8 @@ height: 110px;
 						<tbody>
 							<c:forEach items="${orderList}" var="ol" varStatus="status" >
 								<tr>
-								<td>${status.index+1}</td>
-								<td>
+								<td align="center">${status.index+1}</td>
+								<td align="center">
 									${ol.sangpum }/	${list[status.index].color} / ${list[status.index].sangpumsize}						 
 									</td> 
 									<td class="goods_table_price_td">

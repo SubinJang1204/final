@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+* { font-family: 'Gowun Dodum', sans-serif; }
+
+.con{	
+	display: flex;
+	justify-content: center;
+	width: 100vw;
+}
+
+#photowrap{
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+	border-radius: 100px;
+	
+}
+
+#myphoto{
+	margin: auto;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.list-btn{
+	font-size: 1.5rem !important;
+	background-color: white !important;
+}
+.list-btn:hover{
+	background-color: black !important;
+}
+
+.locationA{
+	color: black;
+	text-decoration: none;
+}
+.locationA:hover {
+	color: black;
+}

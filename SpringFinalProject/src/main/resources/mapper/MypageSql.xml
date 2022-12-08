@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boot.sist.mapper.MypageMapperInter">
+
+   
+   <select id="getShopListbyMemberNum" parameterType="String" resultType="MypageshopDto">
+   	SELECT a.shopnum
+	     , a.sangpum
+	     , a.photo
+		 , a.price
+	     , b.memberNum
+	  FROM shop AS a
+	  LEFT OUTER JOIN shopInterest AS b
+	    ON a.shopnum = b.shopNum
+		where memberNum=#{num}
+   </select>
+   
+   <update id="updateInfo" parameterType="member">
+   	update member set name=#{name}, pass=#{pass}, photo=#{photo}, hp=#{hp}, addr=#{addr}, email=#{email}
+	where num=#{num}
+   </update>
+   
+   <select id="getOrderListbyMemberNum" parameterType="String" resultType="MypageorderDto">
+   	SELECT a.o_num
+		 , a.p_num
+		 , a.cnt
+	     , b.name
+	     , b.m_num
+		 , b.orderdate
+		 , c.sangpum
+	  FROM orderItem  AS a
+	  LEFT JOIN cartorder AS b
+	    ON a.o_num = b.o_num
+	  LEFT JOIN shop AS c
+		ON c.shopnum=a.p_num
+		where m_num=#{num}
+   </select>
+   
+   <delete id="deletemyinfo" parameterType="String">
+   	delete from member where num=#{num}
+   </delete>
+ 
+</mapper>

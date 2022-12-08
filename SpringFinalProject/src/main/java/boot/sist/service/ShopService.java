@@ -27,11 +27,6 @@ public class ShopService implements ShopServiceInter {
 	ShopMapperInter shopMapper;
 
 	@Override
-	public ShopDto getShoporder(String shopnum) {
-		return shopMapper.getShoporder(shopnum);
-	}
-	
-	@Override
 	public List<ShopListDto> getShopList(ShopListEntity shopListEntity) {
 		return shopMapper.getShopList(shopListEntity);
 	}

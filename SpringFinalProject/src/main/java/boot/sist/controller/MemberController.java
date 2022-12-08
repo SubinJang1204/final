@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -21,7 +20,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import boot.sist.dto.MemberDto;
-import boot.sist.dto.OrderDto;
 import boot.sist.service.MemberService;
 
 @Controller
@@ -94,8 +92,5 @@ public class MemberController {
 
 		return "redirect:/manager/memberList";
 	}
-	
-	
-	
 
 }

@@ -71,11 +71,6 @@ public class CartService implements CartServiceInter {
 		return mapperinter.getMnum(id);
 	}
 
-	@Override
-	public String getPhoto(int shopnum) {
-		// TODO Auto-generated method stub
-		return mapperinter.getPhoto(shopnum);
-	}
 
 	@Override
 	public int deleteOrderCart(CartDto dto) {

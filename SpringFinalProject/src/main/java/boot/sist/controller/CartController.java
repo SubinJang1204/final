@@ -50,7 +50,7 @@ public class CartController {
 	public String listCart(HttpSession session, Model model) {
 		
 		String id=(String) session.getAttribute("myid");
-		
+				
 		int m_num=cartService.getMnum(id);
 				
 		List<CartDto> list=cartService.getCart(m_num);

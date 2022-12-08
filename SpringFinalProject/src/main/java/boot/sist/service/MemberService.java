@@ -71,7 +71,8 @@ public class MemberService implements MemberServiceInter {
 
 		mapperInter.deleteMember(num);
 	}
-	
+
+
 	@Override
 	public MemberDto getMemberInfo(int num) {
 		// TODO Auto-generated method stub
@@ -109,6 +110,4 @@ public class MemberService implements MemberServiceInter {
 		mapperInter.deletejumunlist2(o_num);
 	}
 
-
-	
 }

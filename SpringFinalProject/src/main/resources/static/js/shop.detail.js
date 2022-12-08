@@ -222,7 +222,7 @@ $(function() {
 
 	function getStyleReview(review) {
 		reviewId.val(review.num);
-		reviewProfile.attr('src', review.user_photo);
+		reviewProfile.attr('src', '/photo/' + review.user_photo);
 		reviewName.text(review.user_id);
 		reviewDate.text(review.releases);
 		reviewImage.attr('src', review.style_photo);
@@ -404,5 +404,3 @@ $(function() {
 		});
 	});
 });
-
-

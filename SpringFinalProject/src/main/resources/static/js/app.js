@@ -17,7 +17,7 @@ function next_load() {
 		dataType: "JSON",
 		success: function(data) {
 			if (data) {
-				console.log(currentPage + ' page load');
+				// console.log(currentPage + ' page load');
 				/* 이미지 동적 추가 */
 				var s = "";
 				$.each(data, function(idx, item) {
@@ -117,6 +117,9 @@ $(document).on("click",".cardDetail",function(){
 			$("#detailSubject").text(data.subject);
 			$("#detailContent").text(data.content);
 			$("#detailNum").val(data.num);
+			if(data.m_photo!="no"){
+				$("#M_photo").attr('src',`../photo/${data.m_photo}`);
+			}
 			/*$("#detailLikes").text(data.likes);*/
 			addAnsList();
 			
@@ -264,7 +267,13 @@ function addAnsList(){
 
 					s += "<div class='d-flex align-items-center'>";
 					s += "	<div class='flex-shrink-0'>";
-					s += "		<img id='M_photo' src='../snsphoto/user.png' style='max-width: 30px;'>";
+					if(item.m_idphoto=="no"){
+						s += "		<img id='M_photo' src='../snsphoto/user.png' style='max-width: 30px;'>";						
+					}else{
+						s +="<div style='width: 30px; height: 30px; border-radius:15px; overflow:hidden;'>"
+						s += "		<img id='M_photo' src='../photo/"+item.m_idphoto+"' style='width: 100%; height: 100%; over-fit:cover;'>";
+						s +="</div>"
+					}
 					s += "	</div>";
 					s += "	<div class='flex-grow-1 ms-3'>";
 					s += "		<div class='d-flex'>";

@@ -21,6 +21,7 @@ public interface MemberMapperInter {
 	public List<MemberDto> getAllMembers();
 	public void deleteMember(String num);
 	
+
 	/* 주문자 주소 정보 */
 	public MemberDto getMemberInfo(int num);
 	/* 주문자 리스트 */

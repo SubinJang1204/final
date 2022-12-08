@@ -5,7 +5,7 @@
 	<div class="shop-info">
 		<div class="shop-image">
 			<picture>
-				<img src="${shop.getDetail_photo()}" />
+				<img src="/shopphoto/${shop.getDetail_photo()}" />
 			</picture>
 		</div>
 		<div class="shop-detail">
@@ -44,18 +44,19 @@
 					</p>
 				</div>
 				
-				<!-- 주문 form -->
+					<!-- 주문 form -->
 			<form action="/order/${sessionScope.myid}" method="get" class="order_form">
 				<input type="hidden" name="orders[0].p_num" value="${shop.getShopnum()}">
 				<input type="hidden" name="orders[0].cnt" value="">
 			</form>	
-				
+			
+			
 				<div class="shop-delivery-info">
 					<p class="shop-sublabeltext">배송 정보</p>
 					<div class="shop-delivery-list">
 						<div class="shop-delivery">
 							<picture>
-								<img src="" />
+								<img src="../image/dlfqks.png" />
 							</picture>
 							<div class="shop-delivery-text">
 								<p><strong>일반배송</strong> 3,000원</p>
@@ -64,7 +65,7 @@
 						</div>
 						<div class="shop-delivery">
 							<picture>
-								<img src="" />
+								<img src="../image/qothd.png" />
 							</picture>
 							<div class="shop-delivery-text">
 								<p><strong>빠른배송</strong> 5,000원</p>
@@ -127,21 +128,21 @@
 					</div>
 					<div class="shop-notice-info">
 						<div class="shop-notice-item">
-							<img src="" />
+							<img src="../image/cpzm.png" />
 							<div class="shop-notice-text">
 								<p><strong>100% 정품 보증</strong></p>
 								<p>검수한 상품이 정품이 아닐 경우, 구매가의 3배를 보상합니다.</p>
 							</div>
 						</div>
 						<div class="shop-notice-item">
-							<img src="" />
+							<img src="../image/3x.png" />
 							<div class="shop-notice-text">
 								<p><strong>엄격한 다중 검수</strong></p>
 								<p>모든 상품은 검수센터에 도착한 후, 상품별 전문가 그룹의 체계적인 시스템을 거쳐 검수를 진행합니다.</p>
 							</div>
 						</div>
 						<div class="shop-notice-item">
-							<img src="" />
+							<img src="../image/zmfla.png" />
 							<div class="shop-notice-text">
 								<p><strong>정품 인증 패키지</strong></p>
 								<p>검수에 합격한 경우에 한하여 정품 인증 패키지가 포함된 상품이 배송됩니다.</p>
@@ -179,7 +180,7 @@
 				</div>
 				<div class="review-text">
 					<div class="user-profile">
-						<img src="${styleReview.getUser_photo()}" />
+						<img src="/photo/${styleReview.getUser_photo()}" />
 						<span>${styleReview.getUser_id()}</span>
 					</div>
 					<p class="review">${styleReview.getContent()}</p>
@@ -210,7 +211,7 @@
 				</div>
 				<div class="review-text">
 					<div class="user-profile">
-						<img src="{user_photo}" />
+						<img src="/photo/{user_photo}" />
 						<span>{user_id}</span>
 					</div>
 					<p class="review">{content}</p>
@@ -276,7 +277,7 @@
 		<script type="text/template" id="commentBlock">
 			<div class="review-comment-block" data-comment-id="{num}">
 				<div class="review-profile">
-					<img src="{m_photo}" />
+					<img src="/photo/{m_photo}" />
 					<p>
 						<span><strong>{user_id}</strong> {ans_content}</span>
 						<span>{releases}</span>
@@ -318,7 +319,7 @@
 //즉시 구매
 $(".btn-buy").on("click", function(){
 	alert("즉시 구매합니다.");
-	let cnt = 5;
+	let cnt = 1;
 	$(".order_form").find("input[name='orders[0].cnt']").val(cnt);
 	$(".order_form").submit();
 });
@@ -332,9 +333,9 @@ $(".btn-cart").on("click", function(e){
 		dataType: 'json',
 		data: {	m_num : "${m_num}",
 			p_num : "${shop.shopnum}",
-			cnt : "5",
-			sangpumsize : "105",
-			color : 'blue'}
+			cnt : "1",
+			sangpumsize : "${shop.sangpumsize}",
+			color : '${shop.color}'}
 	,
 		success: function(result){
 			cartAlert(result);

@@ -287,18 +287,17 @@ a{
 				<table class="cart_table">
 					<caption>표 내용 부분</caption>
 					<tbody>
-						<c:forEach items="${list}" var="l">
+						<c:forEach items="${list}" var="l" varStatus="status">
 							<tr>
-								<td class="td_width_1 cart_info_td">
-									<input type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked">
+								<td  class="td_width_1 cart_info_td">
+									<input  type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked">
 									<input type="hidden" class="individual_bookPrice_input" value="${l.price}">
 									<input type="hidden" class="individual_bookCount_input" value="${l.cnt}">
 									<input type="hidden" class="individual_totalPrice_input" value="${l.price * l.cnt}">
-									<input type="hidden" class="individual_bookId_input" value="${l.p_num}">								
+									<input type="hidden" id="p_num" class="individual_bookId_input" value="${l.p_num}">								
 								</td>
 								<td class="td_width_2">
 									<div class="image_wrap" data-bookid="${l.price}" data-path="${l.price}" data-uuid="${l.price}" data-filename="${l.price}">
-										<img src="../photo/${photo }">
 									</div>								
 								</td>
 								<td class="td_width_3">${l.sangpum}<br>[${l.color }/${l.sangpumsize }]</td>
@@ -552,7 +551,17 @@ $(".order_btn").on("click", function(){
 	$(".order_form").submit();
 	
 });
-		
+	
+function doAction(){
+	let msgEle= document.getElementByID(".order_form");
+	if(msgEle.value.length == 0){
+		alert("장바구니에 물건을 담아주세요");
+		return false;
+	}
+	
+	return true;
+}
+
 </script>
 
 

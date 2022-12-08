@@ -27,9 +27,7 @@ public interface CartMapperInter {
 		//myid 세션에서 m_num 추출
 		public int getMnum(String id);
 		
-		//p_num으로 img추출
-		public String getPhoto(int shopnum); 
-		
+
 		/* 카트 제거(주문) */
 		public int deleteOrderCart(CartDto dto);
 }

@@ -47,7 +47,6 @@ public class OrderController {
 	  model.addAttribute("orderList", orderService.getGoodsInfo(opd.getOrders()));
       model.addAttribute("memberInfo",memberService.getMemberInfo(m_num));
 	  
-      
       return "/cart/order";
    }
    
