@@ -234,7 +234,7 @@ textarea::placeholder {
 
                <c:if test="${sessionScope.loginok==null }">
 
-                  <li style="margin-left: 883px;"><a href="${root}/login/main"><i
+                  <li style="margin-left: 700px;"><a href="${root}/login/main"><i
                         class="bi bi-box-arrow-right" style="font-size: 18pt;"></i></a></li>&nbsp;&nbsp;&nbsp;
                   <li><i class="bi bi-search"
                      style="font-size: 15pt; position: relative; top: 3px"></i></li>

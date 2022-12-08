@@ -27,12 +27,20 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
 	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
 	crossorigin="anonymous"></script>
+	
+<script type="text/javascript" src="/js/weather.js"></script>
 
 
 <title></title>
 <style type="text/css">
 * {
 	font-family: 'Gowun Dodum', sans-serif;
+	margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    text-decoration: none;
+    list-style: none;
+    color: black;
 }
 
 .f_link {
@@ -88,6 +96,25 @@
 .links img:hover {
 	-webkit-filter: grayscale(0%);
 	filter: grayscale(0%);
+}
+
+#temp {
+	height: 50px;
+	width: 350px;
+	position: absolute;
+	top: 480px;
+	left: 0px;
+}
+
+#temp{
+    height: 50px;
+    overflow: hidden;
+}
+#temp>ul{
+    height: 50px;
+}
+#temp>ul>li{
+    height: 50px;
 }
 </style>
 </head>
@@ -173,5 +200,26 @@
 		</div>
 	</center>
 
+	<div id="temp">
+			<ul>
+				<li id="gw">강원도</li>
+				<li id="gg">경기도</li>
+				<li id="gn">경상남도</li>
+				<li id="gb">경상북도</li>
+				<li id="gj">광주광역시</li>
+				<li id="dg">대구광역시</li>
+				<li id="dj">대전광역시</li>
+				<li id="bs">부산광역시</li>
+				<li id="su">서울특별시</li>
+				<li id="sj">세종특별자치시</li>
+				<li id="us">울산광역시</li>
+				<li id="ic">인천광역시</li>
+				<li id="jn">전라남도</li>
+				<li id="jb">전라북도</li>
+				<li id="jj">제주특별자치도</li>
+				<li id="cn">충청남도</li>
+				<li id="cb">충청북도</li>
+			</ul>
+		</div>
 </body>
 </html>
