@@ -350,7 +350,7 @@ body {
 				  	<div class="card__header">
 				  		<div class="card__header-text">
 				  			<h3 class="card__title">${dto.subject }_${dto.keyword }</h3>
-				  			<span class="card__status">${dto.writeday }_<b>${dto. }</b></span>				  			
+				  			<span class="card__status">${dto.writeday }_<b></b></span>				  			
 				  		</div>		  		
 				  	</div>
 				  	<p class="card__description">${dto.content }</p>
