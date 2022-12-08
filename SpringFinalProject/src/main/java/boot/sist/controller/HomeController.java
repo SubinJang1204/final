@@ -13,21 +13,11 @@ import boot.sist.dto.CartDto;
 import boot.sist.service.CartService;
 
 @Controller
-public class HomeController {
-
-	@Autowired
-	CartService service; 
+public class HomeController { 
 	
 	@GetMapping("/")
 	public String start(HttpSession session,Model model)
 	{		
-		String myid=(String)session.getAttribute("myid");
-		
-		int m_num=service.getMnum(myid);
-
-	
-		List<CartDto> list =service.getCart(m_num);
-		model.addAttribute("count",list.size());
 		
 		return "/layout/main";
 	}
