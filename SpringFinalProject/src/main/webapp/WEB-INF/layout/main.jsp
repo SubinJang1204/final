@@ -29,6 +29,7 @@
 	crossorigin="anonymous"></script>
 	
 <script type="text/javascript" src="/js/weather.js"></script>
+
 <style type="text/css">
 * {
 	font-family: 'Gowun Dodum', sans-serif;
@@ -189,7 +190,6 @@ figure.snip1368.hover figcaption {
 img:hover{
 cursor:pointer;
 }
-
 #temp {
 	height: 50px;
 	width: 350px;
@@ -278,7 +278,7 @@ cursor:pointer;
 				</div>
 				<caption>EVENT</caption>
 			</div>
-			<div class="links" onclick="location.href=''">
+			<div class="links" onclick="location.href='${root}/map/maplist'">
 				<div class="scale">
 					<img src="../image/q16.png">
 				</div>

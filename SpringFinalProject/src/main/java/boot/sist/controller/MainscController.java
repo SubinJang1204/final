@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,7 +20,7 @@ public class MainscController {
 	@Autowired
 	MainscService service;
 		
-	@GetMapping("/mainsc/list")
+	@PostMapping("/mainsc/list")
 	public ModelAndView list(@RequestParam(defaultValue = "1")int currentPage,
 			@RequestParam(value="searchword",required = false) String sw) {
 		

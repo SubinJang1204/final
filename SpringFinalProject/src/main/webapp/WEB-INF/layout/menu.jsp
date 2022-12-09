@@ -175,7 +175,7 @@ textarea::placeholder {
          </button>
          <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-               <li class="nav-item" style="margin-left: 270px;"><a
+               <li class="nav-item" style="margin-left: 215px;"><a
                   class="nav-link active" aria-current="page" href="/"
                   style="color: #000; font-size: 17pt; margin-top: -6px">Logo</a></li>
 
@@ -198,7 +198,8 @@ textarea::placeholder {
                   href="${root}/sns/list" style="color: #000;">Trend</a></li>
                <li class="nav-item"><a class="nav-link"
                   href="${root}/alba/albalist" style="color: #000;">Recruit</a></li>
-     
+        <li class="nav-item"><a class="nav-link" href="${root}/map/maplist"
+                  style="color: #000;">Snap</a></li>
                <c:if test="${sessionScope.loginok==null }">
 
                   <li style="margin-left: 883px;"><a href="${root}/login/main"><i
@@ -226,8 +227,8 @@ textarea::placeholder {
                         <div style="color: white; background-color: #000; width: 17px; top: -24px; height: 17px; border-radius: 100%; position: relative; left: 15px; font-size: 13px; line-height: 17px;">&nbsp;${count }</div></a></li>&nbsp;&nbsp;&nbsp;
                
                   <li style="cursor: pointer;" class="menu"><i
-                     class="bi bi-justify" style="font-size: 18pt; top: 3px"></i> <c:if
-                        test="${myid=='admin' }">
+                     class="bi bi-justify" style="font-size: 18pt; top: 3px"></i>
+                      <c:if test="${myid=='admin' }">
                         <div class="hide" style="left: -1650px;">
                      </c:if> <c:if test="${myid!='admin' }">
                         <div class="hide">
@@ -239,11 +240,11 @@ textarea::placeholder {
                         </div>
                   </span>
                   <span class="search">
-                        <form name="search" method="post" action="search" target="_parent" id="search_right">
+                        <form name="/mainsc/list" method="post" action="../mainsc/list" target="_parent" id="search_right">
                            <div class="search-box">
-                              <input type="text" class="search-txt" name="search"
+                              <input type="text" class="search-txt" name="searchword"
                                  placeholder="search..." onkeydown="onEnterSubmit()">
-                              <a class="search-btn" onClick="document.search.submit();"><i
+                              <a class="search-btn" onchange="readURL(this)"><i
                                  class="bi bi-search"></i></a>
                            </div>
                         </form>

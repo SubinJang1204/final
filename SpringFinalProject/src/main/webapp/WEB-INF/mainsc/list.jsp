@@ -40,16 +40,16 @@ $(function(){
 }
 
 .wrapper {
-	width: 500px;
-	height: 300px;
+	width: 470px;
+	height: auto;
 	display: inline-block;
 	margin-right: 50px;
 	margin-bottom: 100px;
 }
 
 .wrapper img {
-	width: 500px;
-	height: 300px;
+	width: 400px;
+	height: auto;
 	margin-bottom: 10px;
 }
 
@@ -72,8 +72,8 @@ $(function(){
 }
 
 .scale {
-	width: 500px;
-	height: 300px;
+	width: 400px;
+	height: auto;
 	overflow: hidden;
 }
 
@@ -90,8 +90,8 @@ $(function(){
 }
 
 .scale img {
-	width: 500px;
-	height: 300px;
+	width: 400px;
+	height: auto;
 }
 </style>
 </head>
@@ -120,7 +120,7 @@ $(function(){
 						<span style="color: #2e2e2e; font-size: 0.9em;"> 
 						<a href="${root }/shop/${dto.shopnum }">
 						<div class="scale">
-						<img src="../image/${dto.photo }">
+						<img src="../shopphoto/${dto.photo }">
 						</div>
 						</span>
 						
